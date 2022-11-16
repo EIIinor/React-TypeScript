@@ -3,7 +3,11 @@ import { NavLink } from 'react-router-dom'
 import GrayImage from '../assets/images/gray-img.png'
 import ProductCard from '../components/ProductCard'
 
-const OfferAndCardsSectionOne: React.FC = ({items = [] } ) => {
+interface IProps {
+  items: string
+}
+
+const OfferAndCardsSectionOne: React.FC<IProps> = ({items = [] } ) => {
 
   return (
     <section className='offer-one'>

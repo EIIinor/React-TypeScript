@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+
 const ContactFormSection: React.FC = () => {
     let currentPage = "Contact Us"
     window.top.document.title = `${currentPage} || Fixxo` 
@@ -27,6 +28,9 @@ const ContactFormSection: React.FC = () => {
 
         setErrors({...errors, [id]: validate(e)})
     }
+
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault()

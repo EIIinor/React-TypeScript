@@ -2,7 +2,11 @@ import React from 'react'
 import smallCardImg from "../assets/images/small-card-img.png"
 import ExternalLinkIcon from '../components/ExternalLinkIcon'
 
-const ProductDetailsSection: React.FC = ({product}) => {
+interface IProps {
+    product: string
+  }
+
+const ProductDetailsSection: React.FC<IProps> = ({product}) => {
   return (
     <section className='products-card'>
             <div className='container'>

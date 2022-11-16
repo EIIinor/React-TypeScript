@@ -3,7 +3,11 @@ import { useShoppingCart } from '../contexts/ShoppingCartContext'
 import { currencyFormatter } from '../utilities/currencyFormatter'
 
 
-const ShoppingCartItem: React.FC = ({item}) => {
+interface IProps {
+  item: string
+}
+
+const ShoppingCartItem: React.FC<IProps> = ({item}) => {
 
 
   

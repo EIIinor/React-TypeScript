@@ -4,7 +4,11 @@ import GrayImage from '../assets/images/gray-img.png'
 import ProductCard from '../components/ProductCard'
 
 
-const OfferAndCardsSectionTwo: React.FC = ({ items = [] }) => {
+interface IProps {
+  items: string
+}
+
+const OfferAndCardsSectionTwo: React.FC<IProps> = ({ items = [] }) => {
 
   return (
     <section className='offer-two'>

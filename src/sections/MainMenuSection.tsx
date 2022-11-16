@@ -33,7 +33,7 @@ const MainMenuSection: React.FC<IProps> = () => {
         <div className='menu-icons'>
             <MenuIcon link="/search" icon="fa-regular fa-magnifying-glass" />
             <MenuIcon hideOnMobile={true} link="/compare" icon="fa-regular fa-code-compare" />
-            <MenuIcon  quantity="3" link="/wishlist" icon="fa-regular fa-heart" />
+            <MenuIcon  quantity={3} link="/wishlist" icon="fa-regular fa-heart" />
 
             <button className="menu-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#shoppingCart" aria-controls="shoppingCart">
               <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-theme">{cartQuantity}</span>

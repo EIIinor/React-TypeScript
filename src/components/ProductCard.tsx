@@ -3,9 +3,15 @@ import { NavLink } from 'react-router-dom'
 import { useShoppingCart } from '../contexts/ShoppingCartContext'
 import { currencyFormatter } from '../utilities/currencyFormatter'
 
-const ProductCard: React.FC = ({item}) => {
+
+interface IProps {
+    item: string
+  }
+
+const ProductCard: React.FC<IProps> = ({item}) => {
 
     const {incrementQuantity} = useShoppingCart()
+
 
   return (
     <div className='col'>

@@ -1,7 +1,13 @@
 import React from 'react'
 import ProductCard from '../components/ProductCard'
 
-const ProductGridSection: React.FC = ( {title, items = [] } ) => {
+
+interface IProps {
+  title: string
+  items: string
+}
+
+const ProductGridSection: React.FC<IProps> = ( {title, items = [] } ) => {
 
   return (
     <section className='product-grid'>
