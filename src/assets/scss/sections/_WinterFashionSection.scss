@@ -1,0 +1,29 @@
+.winter-fashion {
+    .container {
+        background-color: $color-gray;
+        height: 326px;
+
+        .info {
+            display: flex;
+            display: inline;
+            text-align: center;
+            justify-content: center;
+            justify-items: center;
+
+            h1 {
+                padding-top: 70px;
+                color: $color-white;
+                font-weight: 600;
+            }
+            p {
+                color: $color-white;
+                font-weight: 600;
+            }
+
+            .btn-theme-white {
+                top: 30px;
+                left: 570px;
+            }
+        }
+    }
+}

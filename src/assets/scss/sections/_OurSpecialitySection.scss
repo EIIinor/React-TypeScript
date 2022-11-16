@@ -1,0 +1,93 @@
+.speciality {
+    margin-bottom: 60px;
+    padding-right: 85px;
+    padding-left: 85px;
+ 
+
+    .container-fluid {
+        display: flex;
+        display: inline-block;
+        justify-content: center;
+        justify-items: center;
+        text-align: center;
+        background-color: $color-extralightgray;
+        padding-bottom: 60px;
+        padding-top: 40px;
+        padding-right: 0px;
+        padding-left: 0px;
+
+        h1 {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 10px;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .choices {
+            display: flex;
+            justify-content: center;
+
+            .track {
+                width: 245px;
+                height: 232px;
+                background-color: $color-white;
+
+                h1 {
+                    padding-top: 4rem;
+                    font-size: 1rem;
+                    font-weight: 600;
+                }
+                .link {
+                    text-decoration: underline;
+                    color: $color-dark;
+                }
+            }
+
+            .first {
+                padding-right: 30px;
+            }
+
+            .return {
+                width: 245px;
+                height: 232px;
+                background-color: $color-white;
+
+                h1 {
+                    padding-top: 4rem;
+                    font-size: 1rem;
+                    font-weight: 600;
+                }
+                .link {
+                    text-decoration: underline;
+                    color: $color-dark;
+                }
+            }
+            .seacond {
+                padding-right: 30px;
+            }
+
+            .adjustment {
+                width: 245px;
+                height: 232px;
+                background-color: $color-white;
+
+                h1 {
+                    display: flex;
+                    display: block;
+                    padding-top: 4rem;
+                    font-size: 1rem;
+                    font-weight: 600;
+
+                    span {
+                        display: block;
+                    }
+                }
+                .link {
+                    text-decoration: underline;
+                    color: $color-dark;
+                }
+            }
+        }
+    }
+}

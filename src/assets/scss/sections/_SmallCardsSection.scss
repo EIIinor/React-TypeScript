@@ -1,0 +1,345 @@
+.small-cards {
+
+    .container {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+
+
+
+        .latest {
+            display: flex;
+            display: inline-block;
+            
+
+            h1 {
+                font-size: 1rem;
+                text-align: left;
+            }
+            
+            .card {
+                display: flex;
+                display: inline-block;
+                border: none;
+                margin-right: auto;
+                margin-left: auto;
+
+
+                .card-img {
+                    display: flex;
+                    display: inline;
+                    position: relative;
+  
+
+                    img {
+                        object-fit: cover;
+                    }
+
+                    .card-menu {
+                        position: absolute;
+                        top: -50px;
+                        right: 7px;
+                        display: block;
+                        
+
+                        .menu-link {
+                            background-color: $color-white;
+                            color: $color-dark;
+                            font-size: 0.8rem;
+                            width: 22px;
+                            height: 22px;
+                            margin-bottom: 10px;
+                            border-radius: 50%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            box-shadow: 0 0 6px 4px $color-shadow;
+                            position: relative;
+                            border: none;
+                            outline: none;
+
+                            &:hover {
+                                color: $color-white;
+                                background-color: $color-dark;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                    .btn-card-theme {
+                        position: absolute;
+                        bottom: -55px;
+                        right: 0px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 160px;
+                        height: 35px;
+                        font-size: 0.8rem;
+                    } 
+                }
+
+                .card-body {
+                    display: flex;
+                    display: inline-block;
+                    justify-content: center;
+                    justify-items: center;
+                    text-align: left;
+                    padding: 0;
+            
+                    .card-category {
+                        margin-bottom: 0px;
+                        font-size: 12px;
+                        font-weight: 500;
+                        color: $color-darkgray;
+                    }
+                    .card-title {
+                        margin-bottom: 0px;
+                        font-size: 14px;
+                        font-weight: 600;
+                    }
+                    .card-rating {
+                        color: $color-theme;
+                        margin-bottom: 0px;
+                    }
+                    .card-price {
+                        font-size: 16px;
+                        font-weight: 600;
+                        margin-bottom: 0px;
+                    }
+                }
+                &:hover {
+                    .card-menu {
+                        display: inline-block !important;
+                    }
+                    .btn-card-theme {
+                        display: inline-block !important;
+                    }
+                }
+            }
+        }
+
+
+        .best-selling {
+            display: flex;
+            display: inline-block;
+
+            h1 {
+                font-size: 1rem;
+                text-align: left;
+            }
+            
+            .card {
+                display: flex;
+                display: inline-block;
+                border: none;
+                margin-right: auto;
+                margin-left: auto;
+
+
+                .card-img {
+                    display: flex;
+                    display: inline;
+                    position: relative;
+  
+
+                    img {
+                        object-fit: cover;
+                    }
+
+                    .card-menu {
+                        position: absolute;
+                        top: -50px;
+                        right: 7px;
+                        display: block;
+                        
+
+                        .menu-link {
+                            background-color: $color-white;
+                            color: $color-dark;
+                            font-size: 0.8rem;
+                            width: 22px;
+                            height: 22px;
+                            margin-bottom: 10px;
+                            border-radius: 50%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            box-shadow: 0 0 6px 4px $color-shadow;
+                            position: relative;
+                            border: none;
+                            outline: none;
+
+                            &:hover {
+                                color: $color-white;
+                                background-color: $color-dark;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                    .btn-card-theme {
+                        position: absolute;
+                        bottom: -55px;
+                        right: 0px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 160px;
+                        height: 35px;
+                        font-size: 0.8rem;
+                    } 
+                }
+
+                .card-body {
+                    display: flex;
+                    display: inline-block;
+                    justify-content: center;
+                    justify-items: center;
+                    text-align: left;
+                    padding: 0;
+            
+                    .card-category {
+                        margin-bottom: 0px;
+                        font-size: 12px;
+                        font-weight: 500;
+                        color: $color-darkgray;
+                    }
+                    .card-title {
+                        margin-bottom: 0px;
+                        font-size: 14px;
+                        font-weight: 600;
+                    }
+                    .card-rating {
+                        color: $color-theme;
+                        margin-bottom: 0px;
+                    }
+                    .card-price {
+                        font-size: 16px;
+                        font-weight: 600;
+                        margin-bottom: 0px;
+                    }
+                }
+                &:hover {
+                    .card-menu {
+                        display: inline-block !important;
+                    }
+                    .btn-card-theme {
+                        display: inline-block !important;
+                    }
+                }
+            }
+        }
+
+
+        .top-ranked {
+            display: flex;
+            display: inline-block;
+
+            h1 {
+                font-size: 1rem;
+                text-align: left;
+            }
+            
+            .card {
+                display: flex;
+                display: inline-block;
+                border: none;
+                margin-right: auto;
+                margin-left: auto;
+
+
+                .card-img {
+                    display: flex;
+                    display: inline;
+                    position: relative;
+  
+
+                    img {
+                        object-fit: cover;
+                    }
+
+                    .card-menu {
+                        position: absolute;
+                        top: -50px;
+                        right: 7px;
+                        display: block;
+                        
+
+                        .menu-link {
+                            background-color: $color-white;
+                            color: $color-dark;
+                            font-size: 0.8rem;
+                            width: 22px;
+                            height: 22px;
+                            margin-bottom: 10px;
+                            border-radius: 50%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            box-shadow: 0 0 6px 4px $color-shadow;
+                            position: relative;
+                            border: none;
+                            outline: none;
+
+                            &:hover {
+                                color: $color-white;
+                                background-color: $color-dark;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                    .btn-card-theme {
+                        position: absolute;
+                        bottom: -55px;
+                        right: 0px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 160px;
+                        height: 35px;
+                        font-size: 0.8rem;
+                    } 
+                }
+
+                .card-body {
+                    display: flex;
+                    display: inline-block;
+                    justify-content: center;
+                    justify-items: center;
+                    text-align: left;
+                    padding: 0;
+            
+                    .card-category {
+                        margin-bottom: 0px;
+                        font-size: 12px;
+                        font-weight: 500;
+                        color: $color-darkgray;
+                    }
+                    .card-title {
+                        margin-bottom: 0px;
+                        font-size: 14px;
+                        font-weight: 600;
+                    }
+                    .card-rating {
+                        color: $color-theme;
+                        margin-bottom: 0px;
+                    }
+                    .card-price {
+                        font-size: 16px;
+                        font-weight: 600;
+                        margin-bottom: 0px;
+                    }
+                }
+                &:hover {
+                    .card-menu {
+                        display: inline-block !important;
+                    }
+                    .btn-card-theme {
+                        display: inline-block !important;
+                    }
+                }
+            }
+        }
+    }
+}

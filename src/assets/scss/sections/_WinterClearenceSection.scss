@@ -1,0 +1,64 @@
+.winter-clearence {
+
+    .container {
+        display: flex;
+        justify-content: center;
+        position: relative;
+
+        .winter {
+            img {
+                position: relative;
+            }
+
+            .winter-info {
+                position: absolute;
+                top: 150px;
+                left: -120px;
+                display: flex;
+                display: block;
+
+                h1 {
+                    display: flex;
+                    display: block;
+                    font-weight: 700;
+    
+                    span {
+                        display: flex;
+                        display: block;
+                    }
+                }
+                p {
+                    display: flex;
+                    display: block;
+                    width: 400px;
+                    padding-bottom: 20px;
+                    padding-top: 15px;
+                }
+            }
+  
+        }
+        .new-arrivals {
+            img {
+                position: relative;
+            }
+            .arrivals-info {
+                position: absolute;
+                top: 260px;
+                right: 240px;
+                display: flex;
+                display: block;
+            }
+            h1 {
+                display: flex;
+                display: block;
+                font-weight: 700;
+                padding-bottom: 20px;
+
+                span {
+                    display: flex;
+                    display: block;
+                }
+            }
+        }
+    }
+}
