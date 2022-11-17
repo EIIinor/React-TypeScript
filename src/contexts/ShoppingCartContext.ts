@@ -1,12 +1,9 @@
 import ShoppingCart from "../components/ShoppingCart";
+import { Product } from '../models/productsModel'
 
-interface IProps {
-    articleNumber: number
-    item: string
-    quantity: number
-  }
 
 const { createContext, useContext, useState } = require("react");
+
 
 const ShoppingCartContext = createContext ()
 
@@ -14,14 +11,21 @@ export const useShoppingCart = () => {
     return useContext(ShoppingCartContext)
 }
 
-export const ShoppingCartProvider = ({children}) => {
+
+interface ShoppingCartContextProps {
+    children: any
+}
+
+
+
+export const ShoppingCartProvider: React.FC<ShoppingCartContextProps> = ({children}) => {
     const [cartItems, setCartItems] = useState ([])
 
     const cartQuantity = cartItems.reduce(
         (quantity, item) => item.quantity + quantity, 0
     )
 
-    const getItemQuantity: React.FC<IProps>= (articleNumber) =>  {
+    const getItemQuantity:= (articleNumber) =>  {
         return cartItems.find(item => item.articleNumber === articleNumber)?.quantity || 0
     }
 
@@ -43,6 +47,10 @@ export const ShoppingCartProvider = ({children}) => {
         })
     }
 
+
+
+
+
     const decrementQuantity = (cartItem) => {
         const {articleNumber} = cartItem
 
@@ -60,6 +68,8 @@ export const ShoppingCartProvider = ({children}) => {
             }
         })
     }
+
+
 
     const removeItem = (articleNumber) => {
         setCartItems(items => {

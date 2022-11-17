@@ -2,13 +2,13 @@ import React, { useContext} from 'react'
 import { NavLink } from 'react-router-dom'
 import GrayImage from '../assets/images/gray-img.png'
 import ProductCard from '../components/ProductCard'
+import { Product } from '../models/productsModel'
 
-
-interface IProps {
-  items: string
+interface ICardsProps {
+  items: Product[]
 }
 
-const OfferAndCardsSectionTwo: React.FC<IProps> = ({ items = [] }) => {
+const OfferAndCardsSectionTwo: React.FC<ICardsProps> = ({ items = [] }) => {
 
   return (
     <section className='offer-two'>
@@ -16,7 +16,7 @@ const OfferAndCardsSectionTwo: React.FC<IProps> = ({ items = [] }) => {
            <div className='cards'>
               <div className='row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4'>
                 {
-                    items.map(product => <ProductCard key={product.articalNumber} item={product} />)
+                    items.map(product => <ProductCard key={product.articleNumber} item={product} />)
                 }
               </div>
             </div>

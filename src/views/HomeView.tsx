@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import MainMenuSection from '../sections/MainMenuSection'
 import FooterSection from '../sections/FooterSection'
 import ProductGridSection from '../sections/ProductGridSection'
@@ -17,6 +17,7 @@ const HomeView: React.FC = () => {
   window.top.document.title = 'Fixxo.'
   const products = useContext(FeaturedProductsContext);
   const four = useContext(FourProductsContext);
+  
   
 
   return (

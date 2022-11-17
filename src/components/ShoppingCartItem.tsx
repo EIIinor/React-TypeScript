@@ -1,13 +1,14 @@
 import React from 'react'
 import { useShoppingCart } from '../contexts/ShoppingCartContext'
 import { currencyFormatter } from '../utilities/currencyFormatter'
+import { Product } from '../models/productsModel'
 
 
-interface IProps {
-  item: string
+interface IShoppingCartProps {
+  item: Product
 }
 
-const ShoppingCartItem: React.FC<IProps> = ({item}) => {
+const ShoppingCartItem: React.FC<IShoppingCartProps> = ({item}) => {
 
 
   

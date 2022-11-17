@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import MenuIcon from '../components/MenuIcon'
 import { useShoppingCart } from '../contexts/ShoppingCartContext'
 
-interface IProps {
+interface IMainMenuProps {
   link: string
   icon: string
   quantity: number
@@ -11,7 +11,7 @@ interface IProps {
   MenuIcon: string
 }
 
-const MainMenuSection: React.FC<IProps> = () => {
+const MainMenuSection: React.FC<IMainMenuProps> = () => {
   const [showMenu, setShowMenu] = useState (false)
     const {cartQuantity} = useShoppingCart ()
 

@@ -1,9 +1,10 @@
 import React from 'react'
 import smallCardImg from "../assets/images/small-card-img.png"
 import ExternalLinkIcon from '../components/ExternalLinkIcon'
+import { Product } from '../models/productsModel'
 
 interface IProps {
-    product: string
+    product: Product
   }
 
 const ProductDetailsSection: React.FC<IProps> = ({product}) => {

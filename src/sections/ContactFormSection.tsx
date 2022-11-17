@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { Form } from '../models/FormModel'
 
 
-const ContactFormSection: React.FC = () => {
+
+const ContactFormSection= () => {
     let currentPage = "Contact Us"
     window.top.document.title = `${currentPage} || Fixxo` 
 
@@ -32,7 +34,7 @@ const ContactFormSection: React.FC = () => {
 
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit= (e: React.FormEvent) => {
         e.preventDefault()
         setErrors(validate(e, {name, email, comments}))
 
@@ -103,7 +105,7 @@ const ContactFormSection: React.FC = () => {
     )
 }
 
-const validate = (e, form = null) => {
+const validate = (e: React.FormEvent, form = null) => {
     if (e.type === 'submit') {
         const errors = {}
         errors.name = validate_name(form.name)

@@ -1,14 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-interface IProps {
+interface IMenuIconProps {
   link: string
   icon: string
   quantity: number
   hideOnMobile: boolean
 }
 
-const MenuIcon: React.FC<IProps> = ({link, icon, quantity, hideOnMobile}) => {
+const MenuIcon: React.FC<IMenuIconProps> = ({link, icon, quantity, hideOnMobile}) => {
 
 
   return (
