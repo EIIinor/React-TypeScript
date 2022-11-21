@@ -3,7 +3,7 @@ import MainMenuSection from '../sections/MainMenuSection'
 import FooterSection from '../sections/FooterSection'
 
 const CategoriesView: React.FC = () => {
-  window.top.document.title = 'Categories | Fixxo.'
+  document.title = 'Categories | Fixxo.'
 
   return (
     <>

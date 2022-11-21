@@ -13,8 +13,10 @@ import WinterFashionSection from '../sections/WinterFashionSection'
 import SmallCardsSection from '../sections/SmallCardsSection'
 import { FeaturedProductsContext, FourProductsContext } from '../contexts/contexts'
 
+
+
 const HomeView: React.FC = () => {
-  window.top.document.title = 'Fixxo.'
+  document.title = 'Fixxo.'
   const products = useContext(FeaturedProductsContext);
   const four = useContext(FourProductsContext);
   

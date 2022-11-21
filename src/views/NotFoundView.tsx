@@ -4,7 +4,7 @@ import FooterSection from '../sections/FooterSection'
 
 
 const NotFoundView: React.FC = () => {
-  window.top.document.title = 'Not Found | Fixxo.'
+ document.title = 'Not Found | Fixxo.'
 
   return (
     <>

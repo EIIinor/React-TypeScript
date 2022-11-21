@@ -3,15 +3,8 @@ import { NavLink } from 'react-router-dom'
 import MenuIcon from '../components/MenuIcon'
 import { useShoppingCart } from '../contexts/ShoppingCartContext'
 
-interface IMainMenuProps {
-  link: string
-  icon: string
-  quantity: number
-  hideOnMobile: boolean
-  MenuIcon: string
-}
 
-const MainMenuSection: React.FC<IMainMenuProps> = () => {
+const MainMenuSection: React.FC = (  ) => {
   const [showMenu, setShowMenu] = useState (false)
     const {cartQuantity} = useShoppingCart ()
 

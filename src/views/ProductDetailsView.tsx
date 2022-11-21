@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom'
 import {FourProductsContext } from '../contexts/contexts'
 
 const ProductDetailsView: React.FC = () => {
+  document.title = 'Product Details | Fixxo.'
   const {id} = useParams()
   const [product, setProduct] = useState({})
   const four = useContext(FourProductsContext);

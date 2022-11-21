@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { Form } from '../models/FormModel'
 
 
 
 const ContactFormSection= () => {
     let currentPage = "Contact Us"
-    window.top.document.title = `${currentPage} || Fixxo` 
+    document.title = `${currentPage} || Fixxo` 
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -13,7 +12,7 @@ const ContactFormSection= () => {
     const [errors, setErrors] = useState({})
     const [submitted, setSubmitted] = useState(false)
 
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
         const {id, value} = e.target
 
         switch(id) {
@@ -28,17 +27,17 @@ const ContactFormSection= () => {
                 break
         }
 
-        setErrors({...errors, [id]: validate(e)})
+        setErrors({...errors, [id]: validate(e, null)})
     }
 
 
 
 
-    const handleSubmit= (e: React.FormEvent) => {
+    const handleSubmit= (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setErrors(validate(e, {name, email, comments}))
 
-        if (errors.name === null && errors.email === null && errors.comments === null) {
+        if (errors!.name === null && errors.email === null && errors.comments === null) {
 
             let json = JSON.stringify({name, email, comments})
 
@@ -85,16 +84,16 @@ const ContactFormSection= () => {
                 <h2>Come in Contact with Us</h2>
                 <form onSubmit={handleSubmit} noValidate>
                     <div>
-                        <input id="name" className={(errors.name ? 'error': '')} value={name} onChange={handleChange} type="text" placeholder="Your Name" />
-                        <div className="errorMessage">{errors.name}</div>
+                        <input id="name" className={(errors?.name? 'error': '')} value={name} onChange={handleChange} type="text" placeholder="Your Name" />
+                        <div className="errorMessage">{errors?.name}</div>
                     </div>
                     <div>
-                        <input id="email" className={(errors.email ? 'error': '')} value={email} onChange={handleChange} type="email" placeholder="Your Mail" />
-                        <div className="errorMessage">{errors.email}</div>
+                        <input id="email" className={(errors?.email? 'error': '')} value={email} onChange={handleChange} type="email" placeholder="Your Mail" />
+                        <div className="errorMessage">{errors?.email}</div>
                     </div>
                     <div className="textarea">
-                        <textarea id="comments" className={(errors.comments ? 'error': '')} style={(errors.comments ? {border: '1px solid #FF7373'}: {} )} value={comments} onChange={handleChange} placeholder="Comments"></textarea>
-                        <div className="errorMessage">{errors.comments}</div>
+                        <textarea id="comments" className={(errors?.comments? 'error': '')} style={(errors.comments? {border: '1px solid #FF7373'}: {} )} value={comments} onChange={handleChange} placeholder="Comments"></textarea>
+                        <div className="errorMessage">{errors?.comments}</div>
                     </div>
                     <div className="formBtn">
                         <button type="submit" className="btn-theme">Post Comments</button>
@@ -105,12 +104,26 @@ const ContactFormSection= () => {
     )
 }
 
-const validate = (e: React.FormEvent, form = null) => {
+
+interface IForm {
+    name: string
+    email: string
+    comments: string
+}
+
+interface IErrors {
+    comments: string | null
+    name: string | null
+    email: string | null
+
+}
+
+const validate = (e: any, form: IForm | null) => {
     if (e.type === 'submit') {
-        const errors = {}
-        errors.name = validate_name(form.name)
-        errors.email = validate_email(form.email)
-        errors.comments = validate_comments(form.comments)
+        const errors : IErrors = {name: null, email: null, comments: null}
+        errors.name = validate_name(form!.name)
+        errors.email = validate_email(form!.email)
+        errors.comments = validate_comments(form!.comments)
         return errors
     
         } else {
@@ -126,7 +139,7 @@ const validate = (e: React.FormEvent, form = null) => {
     }
 }
     
-    const validate_name = (value) => {
+    const validate_name = (value: string) => {
         const regex_name = /^[A-Za-z]+$/
 
         if (!value)
@@ -141,7 +154,7 @@ const validate = (e: React.FormEvent, form = null) => {
             return null
     }
 
-    const validate_email = (value) => {
+    const validate_email = (value: string) => {
         const regex_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         
         if (!value)
@@ -152,7 +165,7 @@ const validate = (e: React.FormEvent, form = null) => {
             return null
     }
     
-    const validate_comments = (value) => {
+    const validate_comments = (value: string) => {
         if (!value)
             return 'Leave a comment would you'
         else if (value.length < 5)

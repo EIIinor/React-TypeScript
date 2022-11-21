@@ -7,7 +7,7 @@ import ContactFormSection from '../sections/ContactFormSection'
 
 
 const ContactsView: React.FC = () => {
-  window.top.document.title = 'Contacts | Fixxo.'
+  document.title = 'Contacts | Fixxo.'
 
   return (
     <>

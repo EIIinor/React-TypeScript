@@ -3,7 +3,7 @@ import MainMenuSection from '../sections/MainMenuSection'
 import FooterSection from '../sections/FooterSection'
 
 const ShoppingCartView: React.FC = () => {
-  window.top.document.title = 'ShoppingCart | Fixxo.'
+  document.title = 'ShoppingCart | Fixxo.'
 
   return (
     <>

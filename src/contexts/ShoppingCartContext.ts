@@ -14,6 +14,7 @@ export const useShoppingCart = () => {
 
 interface ShoppingCartContextProps {
     children: any
+    
 }
 
 
@@ -22,11 +23,11 @@ export const ShoppingCartProvider: React.FC<ShoppingCartContextProps> = ({childr
     const [cartItems, setCartItems] = useState ([])
 
     const cartQuantity = cartItems.reduce(
-        (quantity, item) => item.quantity + quantity, 0
+        (quantity: number, item: string) => item.quantity + quantity, 0
     )
 
-    const getItemQuantity:= (articleNumber) =>  {
-        return cartItems.find(item => item.articleNumber === articleNumber)?.quantity || 0
+    const getItemQuantity = (articleNumber: string) =>  {
+        return cartItems.find((item: string) => item.articleNumber === articleNumber)?.quantity || 0
     }
 
     const incrementQuantity= (cartItem) => {
@@ -71,7 +72,7 @@ export const ShoppingCartProvider: React.FC<ShoppingCartContextProps> = ({childr
 
 
 
-    const removeItem = (articleNumber) => {
+    const removeItem = (articleNumber: string) => {
         setCartItems(items => {
             return items.filter(item => item.articleNumber !== articleNumber) 
         })

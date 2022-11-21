@@ -3,7 +3,7 @@ import MainMenuSection from '../sections/MainMenuSection'
 import FooterSection from '../sections/FooterSection'
 
 const SearchView: React.FC = () => {
-  window.top.document.title = 'Search | Fixxo.'
+  document.title = 'Search | Fixxo.'
 
   return (
     <>

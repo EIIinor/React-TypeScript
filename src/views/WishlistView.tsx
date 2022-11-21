@@ -3,7 +3,7 @@ import MainMenuSection from '../sections/MainMenuSection'
 import FooterSection from '../sections/FooterSection'
 
 const WishlistView: React.FC = () => {
-  window.top.document.title = 'WishList | Fixxo.'
+  document.title = 'WishList | Fixxo.'
 
   return (
     <>
