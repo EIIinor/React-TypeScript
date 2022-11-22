@@ -16,6 +16,8 @@ import NotFoundView from './views/NotFoundView';
 import { ProductsContext, FeaturedProductsContext, FourProductsContext } from './contexts/contexts'
 import {ShoppingCartProvider} from './contexts/ShoppingCartContext'
 
+import ProductProvider from './contexts/productContext'
+
 
 function App() {
   const [products, setProducts] = useState([])
@@ -50,6 +52,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ProductProvider>
       <ShoppingCartProvider>
       <ProductsContext.Provider value={products}>
       <FeaturedProductsContext.Provider value={featured}>
@@ -70,6 +73,7 @@ function App() {
       </FeaturedProductsContext.Provider>
       </ProductsContext.Provider>
       </ShoppingCartProvider>
+      </ProductProvider>
     </BrowserRouter>
   );
 }
