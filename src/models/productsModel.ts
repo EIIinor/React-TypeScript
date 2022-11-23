@@ -5,5 +5,4 @@ export interface Product {
     category: string
     imageName: string
     quantity: number
-    product: Product
 }
