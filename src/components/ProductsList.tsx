@@ -3,7 +3,12 @@ import {IProductContext, ProductContext} from '../contexts/productContext'
 import { Product } from '../models/productsModel'
 
 const ProductsList = () => {
-    const { product, products } = React.useContext(ProductContext) as IProductContext
+    const { products, getAll } = React.useContext(ProductContext) as IProductContext
+
+  useEffect(() => {
+    getAll()
+
+  }, [getAll])
 
 
   return (

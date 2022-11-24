@@ -6,7 +6,8 @@ export interface IProductContext {
     setProduct: React.Dispatch<React.SetStateAction<Product>>
     products: Product[]
     create: (e: React.FormEvent) => void
-    read: (id: number) => void
+    get: (id: number) => void
+    getAll: () => void
     update: (id: number, e:React.FormEvent) => void
     remove: (id: number) => void
 }
@@ -20,7 +21,7 @@ interface IProductProviderProps {
 
 const ProductProvider = ( {children} : IProductProviderProps ) => {
 
-    const baseUrl = 'http://localhost:5000/api/products'
+    const baseUrl = 'http://localhost:1234/api/products'
 
     const product_default: Product = {articleNumber: '', name: '', price: 0, category: '', imageUrl: '', quantity: 0,  }
 
@@ -41,10 +42,16 @@ const ProductProvider = ( {children} : IProductProviderProps ) => {
         setProduct(product_default)
     }
 
-    const read = async (id: number) => {
+    const get = async (id: number) => {
       const result = await fetch(`${baseUrl}/${id}`)
       if (result.status === 201)
         setProduct(await result.json())
+    }
+
+    const getAll = async () => {
+      const result = await fetch(`${baseUrl}`)
+      if (result.status === 200)
+        setProducts(await result.json())
     }
 
   
@@ -72,7 +79,7 @@ const ProductProvider = ( {children} : IProductProviderProps ) => {
     
 
   return (
-    <ProductContext.Provider value={{ product, setProduct, products, create, read, update, remove }}>
+    <ProductContext.Provider value={{ product, setProduct, products, create, get, getAll, update, remove }}>
         {children}
     </ProductContext.Provider>
   )
