@@ -8,8 +8,8 @@ export interface IProductContext {
     create: (e: React.FormEvent) => void
     get: (id: number) => void
     getAll: () => void
-    update: (id: number, e:React.FormEvent) => void
-    remove: (id: number) => void
+    update: (e:React.FormEvent) => void
+    remove: (articleNumber: number) => void
 }
 
 export const ProductContext = createContext<IProductContext | null>(null)
@@ -42,8 +42,8 @@ const ProductProvider = ( {children} : IProductProviderProps ) => {
         setProduct(product_default)
     }
 
-    const get = async (id: number) => {
-      const result = await fetch(`${baseUrl}/${id}`)
+    const get = async (articleNumber: number) => {
+      const result = await fetch(`${baseUrl}/${articleNumber}`)
       if (result.status === 201)
         setProduct(await result.json())
     }
@@ -55,10 +55,10 @@ const ProductProvider = ( {children} : IProductProviderProps ) => {
     }
 
   
-    const update = async (id: number, e: React.FormEvent) => {
+    const update = async (e: React.FormEvent) => {
       e.preventDefault()
 
-      const result = await fetch(`${baseUrl}/${id}`, {
+      const result = await fetch(`${baseUrl}/${product.articleNumber}`, {
         method: 'put',
         headers: {
           'Content-Type': 'application/json'
@@ -69,8 +69,8 @@ const ProductProvider = ( {children} : IProductProviderProps ) => {
         setProduct(await result.json())
     }
 
-    const remove = async (id: number) => {
-      const result = await fetch(`${baseUrl}/${id}`, {
+    const remove = async (articleNumber: number) => {
+      const result = await fetch(`${baseUrl}/${articleNumber}`, {
         method: 'delete'
       })
       if (result.status === 204)

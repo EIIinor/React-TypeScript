@@ -3,7 +3,7 @@ import {IProductContext, ProductContext} from '../contexts/productContext'
 import { Product } from '../models/productsModel'
 
 const ProductsList = () => {
-    const { products, getAll } = React.useContext(ProductContext) as IProductContext
+    const { products, getAll, remove } = React.useContext(ProductContext) as IProductContext
 
   useEffect(() => {
     getAll()
@@ -11,11 +11,15 @@ const ProductsList = () => {
   }, [getAll])
 
 
+  const removeProduct = (articleNumber:number) => {
+    remove(articleNumber)
+  }
+
   return (
     <>
     <h3 className='display-6 mb-4'>List of Products</h3>
         {
-            products.map((product:Product) => (<div key={product.articleNumber} className='mb-3'>{product.name}</div>))
+            products.map((product:Product) => (<div onClick={() => removeProduct} key={product.articleNumber} className='mb-3'>{product.name}</div>))
         }
     </>
   )
