@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductCard from '../components/ProductCard'
-import { ProductModel } from '../models/productModel'
+import { ProductModel } from '../models/ProductModel'
 
 
 interface IProductGridProps {

@@ -1,5 +1,5 @@
 import React, {useState, useContext, createContext} from 'react'
-import { ProductModel } from '../models/productModel'
+import { ProductModel } from '../models/ProductModel'
 
 export interface IProductContext {
     product: ProductModel

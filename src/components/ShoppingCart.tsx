@@ -1,14 +1,10 @@
 import React from 'react'
-import {useShoppingCart} from '../contexts/ShoppingCartContext'
+import {ShoppingCartContextType, useShoppingCartContext} from '../contexts/ShoppingCartContext'
 import ShoppingCartItem from './ShoppingCartItem'
-import { ProductModel } from '../models/productModel'
 
-interface IShoppingCartProps {
-    item: string
-}
 
-const ShoppingCart: React.FC<IShoppingCartProps> = () => {
-    const {cartItems} = useShoppingCart ()
+const ShoppingCart: React.FC = () => {
+    const {items} = useShoppingCartContext () as ShoppingCartContextType
 
 
       
@@ -20,7 +16,7 @@ const ShoppingCart: React.FC<IShoppingCartProps> = () => {
         </div>
         <div className="offcanvas-body">
             {
-                cartItems.map((item:ProductModel) => (<ShoppingCartItem key={item.articleNumber} item={item} />))
+                items.map(item => (<ShoppingCartItem key={item.articleNumber} item={item} />))
             }
         </div>
     </div>

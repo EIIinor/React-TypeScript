@@ -1,13 +1,18 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import MainMenuSection from '../sections/MainMenuSection'
 import BreadcrumbSection from '../sections/BreadcrumbSection'
 import ProductGridSection from '../sections/ProductGridSection'
 import FooterSection from '../sections/FooterSection'
-import { ProductsContext } from '../contexts/ProductContext'
+import { ProductContextType, useProductContext } from '../contexts/ProductContext'
 
 const ProductsView: React.FC = () => {
     document.title = 'Products | Fixxo.'
-    const products = useContext(ProductsContext);
+    const {products, getProducts} = useProductContext() as ProductContextType
+
+    useEffect(() => {
+      getProducts()
+    }, [])
+
 
   return (
     <>

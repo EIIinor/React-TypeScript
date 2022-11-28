@@ -1,8 +1,8 @@
 import React from 'react'
-import { IProductContext, ProductContext } from '../contexts/ApiProductContext'
+import { IProductContext, ApiProductContext } from '../contexts/ApiProductContext'
 
 const CreateFormProduct = () => {
-    const { create , product, setProduct } = React.useContext(ProductContext) as IProductContext
+    const { create , product, setProduct } = React.useContext(ApiProductContext) as IProductContext
 
   return (
     <form onSubmit={create} className="d-grid mb-5" >

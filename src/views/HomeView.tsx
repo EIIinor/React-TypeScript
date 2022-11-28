@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, { useEffect } from 'react'
 import MainMenuSection from '../sections/MainMenuSection'
 import FooterSection from '../sections/FooterSection'
 import ProductGridSection from '../sections/ProductGridSection'
@@ -11,15 +11,18 @@ import WinterClearenceSection from '../sections/WinterClearenceSection'
 import OurSpecialitySection from '../sections/OurSpecialitySection'
 import WinterFashionSection from '../sections/WinterFashionSection'
 import SmallCardsSection from '../sections/SmallCardsSection'
-import { FeaturedProductsContext, FourProductsContext } from '../contexts/ProductContext'
+import { ProductContextType, useProductContext } from '../contexts/ProductContext'
 
 
 
 const HomeView: React.FC = () => {
   document.title = 'Fixxo.'
-  const products = useContext(FeaturedProductsContext);
-  const four = useContext(FourProductsContext);
-  
+  const {featured, getFeatured, products, getProducts} = useProductContext() as ProductContextType
+
+  useEffect(() => {
+    getFeatured(8)
+    getProducts(4)
+  }, [])
   
 
   return (
@@ -29,11 +32,11 @@ const HomeView: React.FC = () => {
         <ShowcaseSection />
       </header>
       <WinterClearenceSection />
-      <ProductGridSection title="Featured Products" items={products} />
+      <ProductGridSection title="Featured Products" items={featured} />
       <TopPicksSection />
       <OurSpecialitySection />
-      <OfferAndCardsSectionOne items={four} />
-      <OfferAndCardsSectionTwo items={four} />
+      <OfferAndCardsSectionOne items={products} />
+      <OfferAndCardsSectionTwo items={products} />
       <WinterFashionSection />
       <SmallCardsSection />
       <CustomerInfoSection />

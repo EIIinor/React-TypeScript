@@ -1,11 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-interface IMenuIconProps {
+export interface IMenuIconProps {
   link: string
   icon: string
-  quantity: number
-  hideOnMobile: boolean
+  quantity?: number
+  hideOnMobile?: boolean
 }
 
 const MenuIcon: React.FC<IMenuIconProps> = ({link, icon, quantity, hideOnMobile}) => {

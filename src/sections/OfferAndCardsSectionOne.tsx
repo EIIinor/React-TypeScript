@@ -2,10 +2,10 @@ import React, { useContext} from 'react'
 import { NavLink } from 'react-router-dom'
 import GrayImage from '../assets/images/gray-img.png'
 import ProductCard from '../components/ProductCard'
-import { Product } from '../models/ProductModel'
+import { ProductModel } from '../models/ProductModel'
 
 interface ICardsProps {
-  items: Product[]
+  items: ProductModel[]
 }
 
 const OfferAndCardsSectionOne: React.FC<ICardsProps> = ({items = [] } ) => {
@@ -25,7 +25,7 @@ const OfferAndCardsSectionOne: React.FC<ICardsProps> = ({items = [] } ) => {
             <div className='cards'>
               <div className='row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4'>
                 {
-                    items.map(product => <ProductCard key={product.articleNumber} item={product} />)
+                    items.map(product => <ProductCard key={product.articleNumber} product={product} />)
                 }
               </div>
             </div>

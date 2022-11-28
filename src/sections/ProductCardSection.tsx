@@ -1,7 +1,7 @@
 import React from 'react'
 import smallCardImg from "../assets/images/small-card-img.png"
 import ExternalLinkIcon from '../components/ExternalLinkIcon'
-import { ProductModel } from '../models/productModel'
+import { ProductModel } from '../models/ProductModel'
 
 interface ICardSectionProps {
     product: ProductModel

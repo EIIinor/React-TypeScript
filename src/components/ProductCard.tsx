@@ -1,8 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { useShoppingCart } from '../contexts/ShoppingCartContext'
+import { ShoppingCartContextType, useShoppingCartContext } from '../contexts/ShoppingCartContext'
 import { currencyFormatter } from '../utilities/currencyFormatter'
-import { ProductModel } from '../models/productModel'
+import { ProductModel } from '../models/ProductModel'
 
 
 interface IProductCardProps {
@@ -11,7 +11,7 @@ interface IProductCardProps {
 
 const ProductCard: React.FC<IProductCardProps> = ({product}) => {
 
-    const {incrementQuantity} = useShoppingCart()
+    const {increment} = useShoppingCartContext() as ShoppingCartContextType
 
 
   return (
@@ -22,7 +22,7 @@ const ProductCard: React.FC<IProductCardProps> = ({product}) => {
                 <div className='card-menu d-xl-none'>
                     <button className="menu-link"><i className='fa-regular fa-heart'></i></button>
                     <button className="menu-link"><i className='fa-regular fa-code-compare'></i></button>
-                    <button onClick={() => incrementQuantity({articleNumber: product.articleNumber, product:product})} className="menu-link"><i className='fa-regular fa-bag-shopping'></i></button>
+                    <button onClick={() => increment({articleNumber: product, articleNumber, product:product})} className="menu-link"><i className='fa-regular fa-bag-shopping'></i></button>
                 </div>
                 <NavLink to={`/products/${product.articleNumber}`} className="btn-theme btn-card-theme d-xl-none">
                     <span className='corner-left'></span>

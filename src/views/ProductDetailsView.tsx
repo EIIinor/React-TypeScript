@@ -1,25 +1,21 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect } from 'react'
 import MainMenuSection from '../sections/MainMenuSection'
 import FooterSection from '../sections/FooterSection'
 import BreadcrumbSection from '../sections/BreadcrumbSection'
 import ProductDetailsSection from '../sections/ProductDetailsSection'
 import ProductGridSection from '../sections/ProductGridSection'
 import { useParams } from 'react-router-dom'
-import {FourProductsContext } from '../contexts/ProductContext'
+import { ProductContextType, useProductContext } from '../contexts/ProductContext'
 
 const ProductDetailsView: React.FC = () => {
   document.title = 'Product Details | Fixxo.'
-  const {id} = useParams()
-  const [product, setProduct] = useState({})
-  const four = useContext(FourProductsContext);
+  const {id} = useParams<string>()
+  const productContext = useProductContext () as ProductContextType
+ 
   
 
   useEffect(() => {
-      const fetchData = async () => {
-          const result = await fetch(`https://win22-webapi.azurewebsites.net/api/products/${id}`)
-          setProduct(await result.json())
-      }
-      fetchData()
+    productContext.getProduct(id)
   }, [])
 
 
@@ -27,8 +23,8 @@ const ProductDetailsView: React.FC = () => {
     <>
       <MainMenuSection />
       <BreadcrumbSection currentPage="Products" />
-      <ProductDetailsSection product={product} />
-      <ProductGridSection title="Related Products" items={four}/>
+      <ProductDetailsSection product={productContext.product} />
+      <ProductGridSection title="Related Products" items={productContext.product}/>
       <FooterSection />
     </>
   )
