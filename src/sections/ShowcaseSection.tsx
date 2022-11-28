@@ -11,7 +11,7 @@ const ShowcaseSection: React.FC = () => {
             <div className='info'>
                 <h1>SALE UP <span>To 50% Off</span></h1>
                 <p>Online shopping free home delivery over $100</p>
-                <NavLink to="#" className="btn-theme">
+                <NavLink to="/products" className="btn-theme">
                     <span className='corner-left'></span>
                     <span className='corner-right'></span>
                     SHOP NOW

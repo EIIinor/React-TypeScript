@@ -1,11 +1,11 @@
 import React from 'react'
 import { useShoppingCart } from '../contexts/ShoppingCartContext'
 import { currencyFormatter } from '../utilities/currencyFormatter'
-import { Product } from '../models/productsModel'
+import { ProductModel } from '../models/productModel'
 
 
 interface IShoppingCartProps {
-  item: Product
+  item: ProductModel
 }
 
 const ShoppingCartItem: React.FC<IShoppingCartProps> = ({item}) => {
@@ -17,10 +17,10 @@ const ShoppingCartItem: React.FC<IShoppingCartProps> = ({item}) => {
   return (
     <div className='shoppingcart-item'>
       <div className='item-image'>
-        <img src={item.product.imageName} alt={item.product.name} />
+        <img src={item.imageUrl} alt={item.name} />
       </div>
       <div className='item-info'>
-        <div className='item-info-name'>{item.product.name}</div>
+        <div className='item-info-name'>{item.name}</div>
         <div className='item-info-quantity'>
           <div className='item-info-quantity-box'>
             <button onClick={() => decrementQuantity(item)}>-</button>
@@ -30,7 +30,7 @@ const ShoppingCartItem: React.FC<IShoppingCartProps> = ({item}) => {
         </div>
       </div>
       <div className='item-price'>
-        <div>{currencyFormatter(item.product.price * item.quantity)}</div>
+        <div>{currencyFormatter(item.price * item.quantity)}</div>
         <button onClick={() => removeItem(item.articleNumber)}><i className='fa-solid fa-trash'></i></button>
       </div>
     </div>

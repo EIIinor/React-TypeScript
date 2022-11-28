@@ -5,7 +5,7 @@ import BreadcrumbSection from '../sections/BreadcrumbSection'
 import ProductDetailsSection from '../sections/ProductDetailsSection'
 import ProductGridSection from '../sections/ProductGridSection'
 import { useParams } from 'react-router-dom'
-import {FourProductsContext } from '../contexts/contexts'
+import {FourProductsContext } from '../contexts/ProductContext'
 
 const ProductDetailsView: React.FC = () => {
   document.title = 'Product Details | Fixxo.'

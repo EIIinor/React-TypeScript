@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
-import {IProductContext, ProductContext} from '../contexts/productContext'
-import { Product } from '../models/productsModel'
+import {IProductContext, ProductContext} from '../contexts/ApiProductContext'
+import { Product } from '../models/ProductModel'
 
 const ProductsList = () => {
     const { products, getAll, remove } = React.useContext(ProductContext) as IProductContext

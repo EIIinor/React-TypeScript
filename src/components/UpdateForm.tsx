@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { IProductContext, ProductContext } from '../contexts/productContext'
+import { IProductContext, ProductContext } from '../contexts/ApiProductContext'
 
 const UpdateForm = () => {
     const articleNumber = useParams()

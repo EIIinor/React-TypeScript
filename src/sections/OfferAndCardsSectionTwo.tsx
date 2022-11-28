@@ -2,7 +2,7 @@ import React, { useContext} from 'react'
 import { NavLink } from 'react-router-dom'
 import GrayImage from '../assets/images/gray-img.png'
 import ProductCard from '../components/ProductCard'
-import { Product } from '../models/productsModel'
+import { Product } from '../models/ProductModel'
 
 interface ICardsProps {
   items: Product[]

@@ -1,11 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-interface IProps {
+interface IBreadcrumbProps {
   currentPage: string
 }
 
-const BreadcrumbSection: React.FC<IProps> = ( {currentPage} ) => {
+const BreadcrumbSection: React.FC<IBreadcrumbProps> = ( {currentPage} ) => {
   return (
     <section className='breadcrumb'>
         <div className='container'>

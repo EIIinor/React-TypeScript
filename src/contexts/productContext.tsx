@@ -1,88 +1,52 @@
-import React, {useState, useContext, createContext} from 'react'
-import { Product } from '../models/productsModel'
 
-export interface IProductContext {
-    product: Product
-    setProduct: React.Dispatch<React.SetStateAction<Product>>
-    products: Product[]
-    create: (e: React.FormEvent) => void
-    get: (id: number) => void
-    getAll: () => void
-    update: (e:React.FormEvent) => void
-    remove: (articleNumber: number) => void
-}
+import { useContext, useState } from "react"
+import { createContext } from "react"
+import { ProductModel } from '../models/ProductModel'
 
-export const ProductContext = createContext<IProductContext | null>(null)
-export const useProductContext = () => {return useContext(ProductContext)}
 
 interface IProductProviderProps {
     children: any
-}
-
-const ProductProvider = ( {children} : IProductProviderProps ) => {
-
-    const baseUrl = 'http://localhost:1234/api/products'
-
-    const product_default: Product = {articleNumber: '', name: '', price: 0, category: '', imageUrl: '', quantity: 0,  }
-
-    const [product, setProduct] = useState<Product>(product_default)
-    const [products, setProducts] = useState<Product[]>([])
-
-    const create = async (e: React.FormEvent) => {
-      e.preventDefault()
-
-      const result = await fetch(`${baseUrl}`, {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(product)
-      })
-      if (result.status === 201)
-        setProduct(product_default)
-    }
-
-    const get = async (articleNumber: number) => {
-      const result = await fetch(`${baseUrl}/${articleNumber}`)
-      if (result.status === 201)
-        setProduct(await result.json())
-    }
-
-    const getAll = async () => {
-      const result = await fetch(`${baseUrl}`)
-      if (result.status === 200)
-        setProducts(await result.json())
-    }
-
-  
-    const update = async (e: React.FormEvent) => {
-      e.preventDefault()
-
-      const result = await fetch(`${baseUrl}/${product.articleNumber}`, {
-        method: 'put',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(product)
-      })
-      if (result.status === 200) 
-        setProduct(await result.json())
-    }
-
-    const remove = async (articleNumber: number) => {
-      const result = await fetch(`${baseUrl}/${articleNumber}`, {
-        method: 'delete'
-      })
-      if (result.status === 204)
-        setProduct(await result.json())
-    }
     
-
-  return (
-    <ProductContext.Provider value={{ product, setProduct, products, create, get, getAll, update, remove }}>
-        {children}
-    </ProductContext.Provider>
-  )
 }
 
-export default ProductProvider
+export interface ProductContextType {
+    product: ProductModel
+    all: ProductModel[]
+    featured: ProductModel[]
+}
+
+export const ProductContext = createContext<ProductContextType | null>(null)
+export const useProductContext = () => { return useContext(ProductContext)}
+
+
+export const ProductProvider: React.FC<IProductProviderProps> = ({children}) => {
+    const empty_product: ProductModel = {articleNumber: '', name:'', category:'', price: 0, imageUrl: '', quantity:0 }
+
+    const [product, setProduct] = useState<ProductModel>(empty_product)
+    const [all, setAll] = useState<ProductModel[]>([])
+    const [featured, setFeatured] = useState<ProductModel[]>([])
+
+
+
+    const url = 'https://win22-webapi.azurewebsites.net/api/products'
+
+
+    const getProducts = async () => {
+        const res = await fetch(url)
+        setProducts(await res.json())
+    }
+
+    const getFeaturedProducts = async (take = 0) => {
+        const res = await fetch(url + `?take=${take}`)
+        setFeaturedProducts(await res.json())
+    }
+
+    const getProduct = async (articleNumber) => {
+        const res = await fetch(url + `/${articleNumber}`)
+        setProduct(await res.json())
+    }
+
+    return <ProductContext.Provider value={{product, all, featured, getProducts, getFeaturedProducts, getProduct}}>
+        {children}
+        </ProductContext.Provider>
+}

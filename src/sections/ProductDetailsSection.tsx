@@ -1,19 +1,19 @@
 import React from 'react'
 import smallCardImg from "../assets/images/small-card-img.png"
 import ExternalLinkIcon from '../components/ExternalLinkIcon'
-import { Product } from '../models/productsModel'
+import { ProductModel } from '../models/productModel'
 
-interface IProps {
-    product: Product
+interface IProductDetailsProps {
+    product: ProductModel
   }
 
-const ProductDetailsSection: React.FC<IProps> = ({product}) => {
+const ProductDetailsSection: React.FC<IProductDetailsProps> = ({product}) => {
   return (
     <section className='products-card'>
             <div className='container'>
                 <div className='card'>
                     <div className='images'>
-                        <img src={product.imageName} alt='' />
+                        <img src={product.imageUrl} alt='' />
                         <img className='one' src={smallCardImg} alt='' />
                         <img className='two' src={smallCardImg} alt='' />
                         <img className='three' src={smallCardImg} alt='' />

@@ -1,7 +1,7 @@
 import React from 'react'
 import {useShoppingCart} from '../contexts/ShoppingCartContext'
 import ShoppingCartItem from './ShoppingCartItem'
-import { Product } from '../models/productsModel'
+import { ProductModel } from '../models/productModel'
 
 interface IShoppingCartProps {
     item: string
@@ -20,7 +20,7 @@ const ShoppingCart: React.FC<IShoppingCartProps> = () => {
         </div>
         <div className="offcanvas-body">
             {
-                cartItems.map((item:Product) => (<ShoppingCartItem key={item.articleNumber} item={item} />))
+                cartItems.map((item:ProductModel) => (<ShoppingCartItem key={item.articleNumber} item={item} />))
             }
         </div>
     </div>

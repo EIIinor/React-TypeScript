@@ -11,7 +11,7 @@ import WinterClearenceSection from '../sections/WinterClearenceSection'
 import OurSpecialitySection from '../sections/OurSpecialitySection'
 import WinterFashionSection from '../sections/WinterFashionSection'
 import SmallCardsSection from '../sections/SmallCardsSection'
-import { FeaturedProductsContext, FourProductsContext } from '../contexts/contexts'
+import { FeaturedProductsContext, FourProductsContext } from '../contexts/ProductContext'
 
 
 

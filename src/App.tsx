@@ -1,7 +1,6 @@
 
 import './style.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React, { useEffect, useState } from 'react'
 
 import HomeView from './views/HomeView';
 import CategoriesView from './views/CategoriesView';
@@ -13,50 +12,24 @@ import CompareView from './views/CompareView';
 import WishlistView from './views/WishlistView';
 import ShoppingCartView from './views/ShoppingCartView';
 import NotFoundView from './views/NotFoundView';
-import { ProductsContext, FeaturedProductsContext, FourProductsContext } from './contexts/contexts'
+
+import ProductProvider from './contexts/ProductContext'
+
+
 import {ShoppingCartProvider} from './contexts/ShoppingCartContext'
 
-import ProductProvider from './contexts/productContext'
+import ApiProductProvider from './contexts/ApiProductContext'
 
 
 function App() {
-  const [products, setProducts] = useState([])
-  const [featured, setFeatured] = useState([])
-  const [four, setFour] = useState([])
-  
-
-
-  useEffect(() => {
-    const fetchAllData = async () => {
-      const result = await fetch('https://win22-webapi.azurewebsites.net/api/products')
-      setProducts(await result.json())
-    }
-    fetchAllData()
-
-    const fetchFeaturedData = async () => {
-      const result = await fetch('https://win22-webapi.azurewebsites.net/api/products?take=8')
-      setFeatured(await result.json())
-    }
-    fetchFeaturedData()
-
-    const fetchFourData = async () => {
-      const result = await fetch('https://win22-webapi.azurewebsites.net/api/products?take=4')
-      setFour(await result.json())
-    }
-    fetchFourData()
-
-  }, [setProducts, setFeatured, setFour])  
-
 
 
 
   return (
     <BrowserRouter>
-      <ProductProvider>
+      <ApiProductProvider>
       <ShoppingCartProvider>
-      <ProductsContext.Provider value={products}>
-      <FeaturedProductsContext.Provider value={featured}>
-      <FourProductsContext.Provider value={four}>
+      <ProductProvider>
       <Routes>
         <Route path='/' element={<HomeView />} />
         <Route path='/categories' element={<CategoriesView />} />
@@ -69,11 +42,9 @@ function App() {
         <Route path='/shoppingcart' element={<ShoppingCartView />} />
         <Route path='*' element={<NotFoundView />} />
       </Routes>
-      </FourProductsContext.Provider>
-      </FeaturedProductsContext.Provider>
-      </ProductsContext.Provider>
-      </ShoppingCartProvider>
       </ProductProvider>
+      </ShoppingCartProvider>
+      </ApiProductProvider>
     </BrowserRouter>
   );
 }

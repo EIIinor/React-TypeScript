@@ -1,5 +1,5 @@
 import ShoppingCart from "../components/ShoppingCart";
-import { Product } from '../models/productsModel'
+import { ProductModel } from '../models/productModel'
 
 
 const { createContext, useContext, useState } = require("react");

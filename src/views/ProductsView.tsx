@@ -3,7 +3,7 @@ import MainMenuSection from '../sections/MainMenuSection'
 import BreadcrumbSection from '../sections/BreadcrumbSection'
 import ProductGridSection from '../sections/ProductGridSection'
 import FooterSection from '../sections/FooterSection'
-import { ProductsContext } from '../contexts/contexts'
+import { ProductsContext } from '../contexts/ProductContext'
 
 const ProductsView: React.FC = () => {
     document.title = 'Products | Fixxo.'
