@@ -22,7 +22,7 @@ const ProductCard: React.FC<IProductCardProps> = ({product}) => {
                 <div className='card-menu d-xl-none'>
                     <button className="menu-link"><i className='fa-regular fa-heart'></i></button>
                     <button className="menu-link"><i className='fa-regular fa-code-compare'></i></button>
-                    <button onClick={() => increment({articleNumber: product, articleNumber, product:product})} className="menu-link"><i className='fa-regular fa-bag-shopping'></i></button>
+                    <button onClick={() => increment({articleNumber: product.articleNumber, product:product, quantity: 1})} className="menu-link"><i className='fa-regular fa-bag-shopping'></i></button>
                 </div>
                 <NavLink to={`/products/${product.articleNumber}`} className="btn-theme btn-card-theme d-xl-none">
                     <span className='corner-left'></span>

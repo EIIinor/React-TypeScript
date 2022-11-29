@@ -1,4 +1,119 @@
 import React, { useState } from 'react'
+import AlertFormNotification from '../components/AlertFormNotification'
+import { validate_comments, validate_email, validate_name } from '../utilities/FormValidation'
+
+interface IFormDataProps {
+    name: string
+    email: string
+    comments: string
+}
+
+const ContactFormSection: React.FC = () => {
+    let currentPage = "Contact Us"
+    document.title = `${currentPage} || Fixxo` 
+
+    const default_values: IFormDataProps = {name: '', email:'', comments:'' }
+
+    const [formData, setFormData] = useState<IFormDataProps>(default_values)
+
+    const [errors, setErrors] = useState<IFormDataProps>(default_values)
+
+    const [submitted, setSubmitted] = useState<boolean>(false)
+    const [failedSubmit, setFailedSubmit] = useState<boolean>(false)
+
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {id, value} = e.target
+        setFormData ({...formData, [id]: value})
+
+        if (id === 'name')
+            setErrors({...errors, [id]: validate_name(id, value)})
+
+
+        if (id === 'email')
+            setErrors({...errors, [id]: validate_email(id, value)})
+    }
+
+    
+    const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        const {id, value} = e.target
+        setFormData ({...formData, [id]: value})
+
+        if (id === 'comments')
+            setErrors({...errors, [id]: validate_comments(id, value)})
+
+    }
+
+
+    const handleSubmit = async (e: React.FormEvent ) => {
+        e.preventDefault()
+        setSubmitted(false)
+        setFailedSubmit(false)
+
+        if (formData.name !== '' && formData.email !== '' && formData.comments !== '' )
+            if (errors.name === '' && errors.email === '' && errors.comments === '') {
+
+                const res = await fetch('https://wim22-webapi.azurewebsites.net/api/contactform', {
+                    method: 'post',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+
+                if (res.status === 200) {
+                    setSubmitted(true)
+                    setFormData(default_values)
+                } else {
+                    setSubmitted(false)
+                    setFailedSubmit(true)
+                }
+            }
+    }
+
+
+    return (
+        <section className="contact-form">
+            <div className="container">
+
+                { submitted ? (<AlertFormNotification alertType='seccess' title='Thank you for your comments!' text='We will contact you as soon as possible.' />) : (<></>)}
+                { failedSubmit ? (<AlertFormNotification alertType='danger' title='Oh no, something went wrong!' text='We couldn`t submit oyur comments right now' />) : (<></>)}
+
+  
+
+                <h2>Come in Contact with Us</h2>
+                <form onSubmit={handleSubmit} noValidate>
+                    <div>
+                        <input id="name" className={(errors.name ?'error': '')} value={formData.name} onChange={(e) => handleChange(e)} type="text" placeholder="Your Name" />
+                        <div className="errorMessage">{errors.name}</div>
+                    </div>
+                    <div>
+                        <input id="email" className={(errors.email ?'error': '')} value={formData.email} onChange={(e) => handleChange(e)} type="email" placeholder="Your Mail" />
+                        <div className="errorMessage">{errors.email}</div>
+                    </div>
+                    <div className="textarea">
+                        <textarea id="comments" className={(errors.comments ?'error': '')} style={(errors.comments ? {border: '1px solid #FF7373'}: {} )} value={formData.comments} onChange={(e) => handleTextAreaChange(e)} placeholder="Comments"></textarea>
+                        <div className="errorMessage">{errors.comments}</div>
+                    </div>
+                    <div className="formBtn">
+                        <button type="submit" className="btn-theme">Post Comments</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    )
+}
+
+export default ContactFormSection
+
+
+
+
+
+
+
+
+/* import React, { useState } from 'react'
 
 
 
@@ -84,15 +199,15 @@ const ContactFormSection= () => {
                 <h2>Come in Contact with Us</h2>
                 <form onSubmit={handleSubmit} noValidate>
                     <div>
-                        <input id="name" className={(errors.name 'error': '')} value={name} onChange={handleChange} type="text" placeholder="Your Name" />
+                        <input id="name" className={(errors.name ? 'error': '')} value={name} onChange={handleChange} type="text" placeholder="Your Name" />
                         <div className="errorMessage">{errors.name}</div>
                     </div>
                     <div>
-                        <input id="email" className={(errors.email 'error': '')} value={email} onChange={handleChange} type="email" placeholder="Your Mail" />
+                        <input id="email" className={(errors.email ? 'error': '')} value={email} onChange={handleChange} type="email" placeholder="Your Mail" />
                         <div className="errorMessage">{errors.email}</div>
                     </div>
                     <div className="textarea">
-                        <textarea id="comments" className={(errors.comments 'error': '')} style={(errors.comments {border: '1px solid #FF7373'}: {} )} value={comments} onChange={handleChange} placeholder="Comments"></textarea>
+                        <textarea id="comments" className={(errors.comments ? 'error': '')} style={(errors.comments {border: '1px solid #FF7373'}: {} )} value={comments} onChange={handleChange} placeholder="Comments"></textarea>
                         <div className="errorMessage">{errors.comments}</div>
                     </div>
                     <div className="formBtn">
@@ -103,6 +218,7 @@ const ContactFormSection= () => {
         </section>
     )
 }
+
 
 
 interface IForm {
@@ -142,7 +258,7 @@ const validate = (e: any, form: IForm | null) => {
     const validate_name = (value: string) => {
         const regex_name = /^[A-Za-z]+$/
 
-        if (!value)
+        if (value)
             return 'Tell us your name please'
         else if (value.length < 2)
             return 'Too short darling, minimum two characters'
@@ -154,6 +270,9 @@ const validate = (e: any, form: IForm | null) => {
             return null
     }
 
+
+
+
     const validate_email = (value: string) => {
         const regex_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         
@@ -164,7 +283,7 @@ const validate = (e: any, form: IForm | null) => {
         else
             return null
     }
-    
+
     const validate_comments = (value: string) => {
         if (!value)
             return 'Leave a comment would you'
@@ -176,6 +295,4 @@ const validate = (e: any, form: IForm | null) => {
             return null
     }
 
-
-
-export default ContactFormSection
+*/
