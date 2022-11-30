@@ -16,7 +16,7 @@ const ProductCardSection: React.FC<ICardSectionProps> = ( {product} ) => {
         <div className='container'>
             <div className='card'>
                 <div className='images'>
-                    <img src={product.imageUrl} alt='' />
+                    <img src={product.imageName} alt='' />
                     <img className='one' src={smallCardImg} alt='' />
                     <img className='two' src={smallCardImg} alt='' />
                     <img className='three' src={smallCardImg} alt='' />

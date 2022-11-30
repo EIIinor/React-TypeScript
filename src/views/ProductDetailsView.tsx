@@ -16,15 +16,18 @@ const ProductDetailsView: React.FC = () => {
 
   useEffect(() => {
     productContext.getProduct(id)
+    productContext.getEight(8)
   }, [])
 
 
   return (
     <>
       <MainMenuSection />
-      <BreadcrumbSection currentPage="Products" />
+      <BreadcrumbSection parentPage="Products" currentPage={productContext.product.name} />
       <ProductDetailsSection product={productContext.product} />
-      <ProductGridSection title="Related Products" items={productContext.product}/>
+      
+      <ProductGridSection title="Related Products" items={productContext.eight}/>
+
       <FooterSection />
     </>
   )

@@ -18,7 +18,7 @@ const ProductCard: React.FC<IProductCardProps> = ({product}) => {
     <div className='col'>
         <div className='card'>
             <div className='card-img'>
-                <img src={product.imageUrl} alt={product.name} />
+                <img src={product.imageName} alt={product.name} />
                 <div className='card-menu d-xl-none'>
                     <button className="menu-link"><i className='fa-regular fa-heart'></i></button>
                     <button className="menu-link"><i className='fa-regular fa-code-compare'></i></button>

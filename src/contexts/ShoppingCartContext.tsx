@@ -13,7 +13,7 @@ export interface ShoppingCartContextType {
     totalQuantity: number
     increment: (cartItem: CartItem) => void
     decrement: (cartItem: CartItem) => void
-    remove: (articleNumber: string) => void
+    remove: (articleNumber: number) => void
 }
 
 export const ShoppingCartContext = createContext<ShoppingCartContextType | null>(null)
@@ -60,7 +60,7 @@ export const useShoppingCartContext = () => { return useContext(ShoppingCartCont
         })
     }
 
-    const remove = (articleNumber: string) => {
+    const remove = (articleNumber: number) => {
         setItems(items => { return items.filter(item => item.articleNumber !== articleNumber)})
     }
 

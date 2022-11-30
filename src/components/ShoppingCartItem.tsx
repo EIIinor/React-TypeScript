@@ -15,7 +15,7 @@ const ShoppingCartItem: React.FC<IShoppingCartItemProps> = ({item}) => {
   return (
     <div className='shoppingcart-item'>
       <div className='item-image'>
-        <img src={item.product.imageUrl} alt={item.product.name} />
+        <img src={item.product.imageName} alt={item.product.name} />
       </div>
       <div className='item-info'>
         <div className='item-info-name'>{item.product.name}</div>

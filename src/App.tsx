@@ -16,6 +16,7 @@ import NotFoundView from './views/NotFoundView';
 import ProductProvider from './contexts/ProductContext'
 import {ShoppingCartProvider} from './contexts/ShoppingCartContext'
 import ApiProductProvider from './contexts/ApiProductContext'
+import EditProductsView from './views/EditProductsView';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Route path='/wishlist' element={<WishlistView />} />
         <Route path='/shoppingcart' element={<ShoppingCartView />} />
         <Route path='*' element={<NotFoundView />} />
+        <Route path='/editProducts' element={<EditProductsView />} />
       </Routes>
       </ProductProvider>
       </ShoppingCartProvider>

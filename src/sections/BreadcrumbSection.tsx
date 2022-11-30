@@ -3,9 +3,10 @@ import { NavLink } from 'react-router-dom'
 
 interface IBreadcrumbProps {
   currentPage: string
+  parentPage?: string
 }
 
-const BreadcrumbSection: React.FC<IBreadcrumbProps> = ( {currentPage} ) => {
+const BreadcrumbSection: React.FC<IBreadcrumbProps> = ( {currentPage, parentPage} ) => {
   return (
     <section className='breadcrumb'>
         <div className='container'>
@@ -13,6 +14,9 @@ const BreadcrumbSection: React.FC<IBreadcrumbProps> = ( {currentPage} ) => {
                 <li>
                   <NavLink to="/" className="me-1" >Home</NavLink> 
                 </li>
+                {
+                  (parentPage != undefined) ? <li><NavLink to={`/${parentPage}`}>{parentPage}</NavLink></li> : ""               
+                }
                 <li>{currentPage}</li>
             </ul>
         </div>
