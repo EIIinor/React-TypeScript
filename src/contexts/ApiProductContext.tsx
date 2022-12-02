@@ -6,10 +6,10 @@ export interface IProductContext {
     setProduct: React.Dispatch<React.SetStateAction<ProductModel>>
     products: ProductModel[]
     create: (e: React.FormEvent) => void
-    get: (id: number) => void
-    getAll: () => void
+    get: (articleNumber: string) => void
+    getAll: (take?: number) => void
     update: (e:React.FormEvent) => void
-    remove: (articlenumber: number) => void
+    remove: (articleNumber: string) => void
 }
 
 export const ApiProductContext = createContext<IProductContext | null>(null)
@@ -23,7 +23,7 @@ const ApiProductProvider = ( {children} : IProductProviderProps ) => {
 
     const baseUrl = 'http://localhost:1234/api/products'
 
-    const product_default: ProductModel = {articleNumber: 0, name: '', price: 0, category: '', imageName: '' }
+    const product_default: ProductModel = { tag:'', articleNumber: '', name: '', description: '', price: 0, category: '', imageName: '' }
 
     const [product, setProduct] = useState<ProductModel>(product_default)
     const [products, setProducts] = useState<ProductModel[]>([])
@@ -42,7 +42,7 @@ const ApiProductProvider = ( {children} : IProductProviderProps ) => {
         setProduct(product_default)
     }
 
-    const get = async (articleNumber: number) => {
+    const get = async (articleNumber: string) => {
       const result = await fetch(`${baseUrl}/${articleNumber}`)
       if (result.status === 201)
         setProduct(await result.json())
@@ -69,7 +69,7 @@ const ApiProductProvider = ( {children} : IProductProviderProps ) => {
         setProduct(await result.json())
     }
 
-    const remove = async (articleNumber: number) => {
+    const remove = async (articleNumber: string) => {
       const result = await fetch(`${baseUrl}/${articleNumber}`, {
         method: 'delete'
       })

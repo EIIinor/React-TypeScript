@@ -11,7 +11,7 @@ const ProductsList = () => {
   }, [getAll])
 
 
-  const removeProduct = (articleNumber:number) => {
+  const removeProduct = (articleNumber:string) => {
     remove(articleNumber)
   }
 
@@ -21,7 +21,7 @@ const ProductsList = () => {
         {
             products.map((product:ProductModel) => (
             <div onClick={() => removeProduct} key={product.articleNumber} className='mb-3'>
-              {product.name} {product.category} {product.price}
+              {product.name} {product.category} {product.price} {product.imageName}
             </div>))
         }
     </div>

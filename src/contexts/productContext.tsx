@@ -14,7 +14,7 @@ export interface ProductContextType {
     eight: ProductModel []
     four: ProductModel []
     getProduct: (articleNumber?: string) => void
-    getProducts: (take?: number) => void
+    getProducts: () => void
     getEight: (take?: number) => void
     getFour: (take?: number) => void
 }
@@ -24,8 +24,8 @@ export const useProductContext = () => { return useContext(ProductContext)}
 
 
     const ProductProvider: React.FC<IProductProviderProps> = ({children}) => {
-    const baseUrl:string = 'https://win22-webapi.azurewebsites.net/api/products'
-    const empty_product: ProductModel = {articleNumber: 0, name:'', category:'', price: 0, imageName: ''}
+    const baseUrl:string =  'http://localhost:1234/api/products' // 'https://win22-webapi.azurewebsites.net/api/products'
+    const empty_product: ProductModel = { tag:'', articleNumber: '', name: '', description: '', price: 0, category: '', imageName: '' }
 
     const [product, setProduct] = useState<ProductModel>(empty_product)
     const [products, setProducts] = useState<ProductModel[]>([])
@@ -35,36 +35,34 @@ export const useProductContext = () => { return useContext(ProductContext)}
 
     const getProduct = async (articleNumber?: string) => {
         if (articleNumber !== undefined) {
-            const res = await fetch(baseUrl + `/${articleNumber}`)
+            const res = await fetch(`${baseUrl}/details/${articleNumber}`)
             setProduct(await res.json())
         }
     }
 
-    const getProducts = async (take: number = 0) => {
-        let url = baseUrl
-        if (take !== 0)
-            url = baseUrl + `?take=${take}`
-
+    const getProducts = async () => {
         const res = await fetch(baseUrl)
         setProducts(await res.json())
     }
 
     const getEight = async (take: number = 0) => {
-       // let url = baseUrl + `?tag=eight`
-       // if (take !== 0)
-        //    url += `&take=${take}`
+        let url = `${baseUrl}/eight`
 
-        const result = await fetch(baseUrl + `?take=${take}`)
+        if (take !== 0)
+            url += `/${take}`
+
+        const result = await fetch(url)
         setEight(await result.json())
     }
 
     const getFour = async (take: number = 0) => {
-      //  let url = baseUrl + `?tag=four`
-      //  if (take !== 0)
-      //      url += `?take=${take}`
+        let url = `${baseUrl}/eight`
 
-        const res = await fetch(baseUrl + `?take=${take}`)
-        setFour(await res.json())
+        if (take !== 0)
+            url += `/${take}`
+
+        const result = await fetch(url)
+        setFour(await result.json())
     }
 
 
