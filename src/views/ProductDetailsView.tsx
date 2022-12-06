@@ -16,7 +16,7 @@ const ProductDetailsView: React.FC = () => {
 
   useEffect(() => {
     productContext.getProduct(id)
-    productContext.getEight(8)
+    productContext.getFeatured(8)
   }, [])
 
 
@@ -26,7 +26,7 @@ const ProductDetailsView: React.FC = () => {
       <BreadcrumbSection parentPage="Products" currentPage={productContext.product.name} />
       <ProductDetailsSection product={productContext.product} />
       
-      <ProductGridSection title="Related Products" items={productContext.eight}/>
+      <ProductGridSection title="Related Products" items={productContext.featured}/>
 
       <FooterSection />
     </>

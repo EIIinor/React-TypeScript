@@ -17,11 +17,12 @@ import { ProductContextType, useProductContext } from '../contexts/ProductContex
 
 const HomeView: React.FC = () => {
   document.title = 'Fixxo.'
-  const {eight, getEight, four, getFour} = useProductContext() as ProductContextType
+  const {featured, getFeatured, mens, getMens, womens, getWomens} = useProductContext() as ProductContextType
 
   useEffect(() => {
-    getEight(8)
-    getFour(4)
+    getFeatured(8)
+    getMens(4)
+    getWomens(4)
   }, [])
   
 
@@ -32,11 +33,11 @@ const HomeView: React.FC = () => {
         <ShowcaseSection />
       </header>
       <WinterClearenceSection />
-      <ProductGridSection title="Featured Products" items={eight} />
+      <ProductGridSection title="Featured Products" items={featured} />
       <TopPicksSection />
       <OurSpecialitySection />
-      <OfferAndCardsSectionOne items={four} />
-      <OfferAndCardsSectionTwo items={four} />
+      <OfferAndCardsSectionOne items={womens} />
+      <OfferAndCardsSectionTwo items={mens} />
       <WinterFashionSection />
       <SmallCardsSection />
       <CustomerInfoSection />
