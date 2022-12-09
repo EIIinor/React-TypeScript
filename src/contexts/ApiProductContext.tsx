@@ -3,11 +3,17 @@ import { ProductModel } from '../models/ProductModel'
 
 export interface IProductContext {
     product: ProductModel
-    setProduct: React.Dispatch<React.SetStateAction<ProductModel>>
     products: ProductModel[]
+    featured: ProductModel []
+    mens: ProductModel []
+    womens: ProductModel []
+    get: (articleNumber?: string) => void
+    getAll: () => void
+    getFeatured: (take?: number) => void
+    getMens: (take?: number) => void
+    getWomens: (take?: number) => void
+    setProduct: React.Dispatch<React.SetStateAction<ProductModel>>
     create: (e: React.FormEvent) => void
-    get: (articleNumber: string) => void
-    getAll: (take?: number) => void
     update: (e:React.FormEvent) => void
     remove: (articleNumber: string) => void
 }
@@ -20,13 +26,14 @@ interface IProductProviderProps {
 }
 
 const ApiProductProvider = ( {children} : IProductProviderProps ) => {
-
     const baseUrl = 'http://localhost:1234/api/products'
-
     const product_default: ProductModel = { tag:'', articleNumber: '', name: '', description: '', price: 0, category: '', imageName: '' }
 
     const [product, setProduct] = useState<ProductModel>(product_default)
     const [products, setProducts] = useState<ProductModel[]>([])
+    const [featured, setFeatured] = useState<ProductModel[]>([])
+    const [mens, setMens] = useState<ProductModel[]>([])
+    const [womens, setWomens] = useState<ProductModel[]>([])
 
     const create = async (e: React.FormEvent) => {
       e.preventDefault()
@@ -42,16 +49,16 @@ const ApiProductProvider = ( {children} : IProductProviderProps ) => {
         setProduct(product_default)
     }
 
-    const get = async (articleNumber: string) => {
-      const result = await fetch(`${baseUrl}/${articleNumber}`)
-      if (result.status === 201)
-        setProduct(await result.json())
+    const get = async (articleNumber?: string) => {
+      if (articleNumber !== undefined) {
+          const res = await fetch(`${baseUrl}/product/details/${articleNumber}`)
+          setProduct(await res.json())
+      }
     }
 
     const getAll = async () => {
-      const result = await fetch(`${baseUrl}`)
-      if (result.status === 200)
-        setProducts(await result.json())
+      const res = await fetch(baseUrl)
+      setProducts(await res.json())
     }
 
   
@@ -78,8 +85,40 @@ const ApiProductProvider = ( {children} : IProductProviderProps ) => {
     }
     
 
+    const getFeatured = async (take: number = 0) => {
+      let url = `${baseUrl}/featured`
+
+      if (take !== 0)
+          url += `/${take}`
+
+      const result = await fetch(url)
+      setFeatured(await result.json())
+    }
+    
+
+    const getMens = async (take: number = 0) => {
+      let url = `${baseUrl}/mens`
+
+      if (take !== 0)
+          url += `/${take}`
+
+      const result = await fetch(url)
+      setMens(await result.json())
+    }
+
+    const getWomens = async (take: number = 0) => {
+      let url = `${baseUrl}/womens`
+
+      if (take !== 0)
+          url += `/${take}`
+
+      const result = await fetch(url)
+      setWomens(await result.json())
+    }
+
+
   return (
-    <ApiProductContext.Provider value={{ product, setProduct, products, create, get, getAll, update, remove }}>
+    <ApiProductContext.Provider value={{ product,products, featured ,mens ,womens, getWomens, getMens, getFeatured, get, getAll,setProduct, create, update, remove }}>
         {children}
     </ApiProductContext.Provider>
   )

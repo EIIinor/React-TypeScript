@@ -13,7 +13,7 @@ import WishlistView from './views/WishlistView';
 import ShoppingCartView from './views/ShoppingCartView';
 import NotFoundView from './views/NotFoundView';
 
-import ProductProvider from './contexts/ProductContext'
+// import ProductProvider from './contexts/ProductContext'
 import {ShoppingCartProvider} from './contexts/ShoppingCartContext'
 import ApiProductProvider from './contexts/ApiProductContext'
 import EditProductsView from './views/EditProductsView';
@@ -27,7 +27,6 @@ function App() {
     <BrowserRouter>
       <ApiProductProvider>
       <ShoppingCartProvider>
-      <ProductProvider>
       <Routes>
         <Route path='/' element={<HomeView />} />
         <Route path='/categories' element={<CategoriesView />} />
@@ -41,7 +40,6 @@ function App() {
         <Route path='*' element={<NotFoundView />} />
         <Route path='/editProducts' element={<EditProductsView />} />
       </Routes>
-      </ProductProvider>
       </ShoppingCartProvider>
       </ApiProductProvider>
     </BrowserRouter>

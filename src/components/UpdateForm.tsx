@@ -4,7 +4,7 @@ import { IProductContext, ApiProductContext } from '../contexts/ApiProductContex
 
 const UpdateForm = () => {
     const id = useParams()
-    const { update , product, get, setProduct } = React.useContext(ApiProductContext) as IProductContext
+    const { update , product, setProduct } = React.useContext(ApiProductContext) as IProductContext
 
 
    // useEffect(() => {

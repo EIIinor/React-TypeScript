@@ -3,15 +3,15 @@ import MainMenuSection from '../sections/MainMenuSection'
 import BreadcrumbSection from '../sections/BreadcrumbSection'
 import ProductGridSection from '../sections/ProductGridSection'
 import FooterSection from '../sections/FooterSection'
-import { ProductContextType, useProductContext } from '../contexts/ProductContext'
+import { IProductContext, useProductContext } from '../contexts/ApiProductContext'
 
 const ProductsView: React.FC = () => {
     document.title = 'Products | Fixxo.'
-    const {products, getProducts} = useProductContext() as ProductContextType
+    const {products, getAll} = useProductContext() as IProductContext
 
     useEffect(() => {
-      getProducts()
-    }, [])
+      getAll()
+    }, [getAll])
 
 
   return (

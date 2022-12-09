@@ -5,17 +5,17 @@ import BreadcrumbSection from '../sections/BreadcrumbSection'
 import ProductDetailsSection from '../sections/ProductDetailsSection'
 import ProductGridSection from '../sections/ProductGridSection'
 import { useParams } from 'react-router-dom'
-import { ProductContextType, useProductContext } from '../contexts/ProductContext'
+import { IProductContext, useProductContext } from '../contexts/ApiProductContext'
 
 const ProductDetailsView: React.FC = () => {
   document.title = 'Product Details | Fixxo.'
   const {id} = useParams<string>()
-  const productContext = useProductContext () as ProductContextType
+  const productContext = useProductContext () as IProductContext
  
   
 
   useEffect(() => {
-    productContext.getProduct(id)
+    productContext.get(id)
     productContext.getFeatured(8)
   }, [])
 

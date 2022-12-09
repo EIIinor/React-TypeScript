@@ -1,12 +1,6 @@
-
 import { useContext, useState } from "react"
 import { createContext } from "react"
 import { ProductModel } from '../models/ProductModel'
-
-
-interface IProductProviderProps {
-    children: any
-}
 
 export interface ProductContextType {
     product: ProductModel
@@ -24,8 +18,12 @@ export interface ProductContextType {
 export const ProductContext = createContext<ProductContextType | null>(null)
 export const useProductContext = () => { return useContext(ProductContext)}
 
+interface IProductProviderProps {
+    children: any
+}
 
-    const ProductProvider: React.FC<IProductProviderProps> = ({children}) => {
+const ProductProvider: React.FC<IProductProviderProps> = ({children}) => {
+
     const baseUrl:string =  'http://localhost:1234/api/products' // 'https://win22-webapi.azurewebsites.net/api/products'
     const empty_product: ProductModel = { tag:'', articleNumber: '', name: '', description: '', price: 0, category: '', imageName: '' }
 

@@ -11,13 +11,13 @@ import WinterClearenceSection from '../sections/WinterClearenceSection'
 import OurSpecialitySection from '../sections/OurSpecialitySection'
 import WinterFashionSection from '../sections/WinterFashionSection'
 import SmallCardsSection from '../sections/SmallCardsSection'
-import { ProductContextType, useProductContext } from '../contexts/ProductContext'
+import { IProductContext, useProductContext } from '../contexts/ApiProductContext'
 
 
 
 const HomeView: React.FC = () => {
   document.title = 'Fixxo.'
-  const {featured, getFeatured, mens, getMens, womens, getWomens} = useProductContext() as ProductContextType
+  const {featured, getFeatured, mens, getMens, womens, getWomens} = useProductContext() as IProductContext
 
   useEffect(() => {
     getFeatured(8)
