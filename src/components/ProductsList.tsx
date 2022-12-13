@@ -12,22 +12,31 @@ const ProductsList = () => {
 
   return (
     <div className='container'>
-      <h3 className='display-6 mb-4'>List of Products</h3>
-        {
-            products.map((product:ProductModel) => (
-            <div key={product.articleNumber} className='mb-3'>
-              <div>
+      <h3 className='display-6 mb-4'>Products</h3>
+        <div className='list'>
+          {
+              products.map((product:ProductModel) => (
+              <div key={product.articleNumber} className='mb-3'>
+                <div className='box'>
+                  <img src={product.imageName}/>
 
-                <img src={product.imageName}/>
-                <p>Name: {product.name} </p>
-                <p>Category: {product.category}</p>
-                <p>Price: {product.price} $</p>
-                <button onClick={() => update }><i className="fa-solid fa-pencil"></i></button>
-                <button onClick={() => remove(product.articleNumber)}><i className="fa-solid fa-trash"></i></button>
+                  <div className='info'>
+                    <p className='name'><p>Name:</p> {product.name} </p>
+                    <p className='category'><p>Category:</p> {product.category}</p>
+                    <p className='price'><p>Price:</p> {product.price} $</p>
+                    <p className='tag'><p>Tag:</p> {product.tag}</p>
+                    <p className='description'><p>Description:</p> {product.description}</p>
+                  </div>
 
-              </div>
-            </div>))
-        }
+                  <div className='buttons'>
+                    <button className='edit' onClick={() => update }><i className="fa-solid fa-pencil"></i></button>
+                    <button className='delete' onClick={() => remove(product.articleNumber)}><i className="fa-solid fa-trash"></i></button>
+                  </div>
+
+                </div>
+              </div>))
+          }
+        </div>
     </div>
   )
 }

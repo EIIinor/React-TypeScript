@@ -1,0 +1,106 @@
+.container {
+    h3 {
+
+    }
+    .list {
+        display: flex;
+        display: block;
+
+        .box {
+            border: 1px solid rgb(224, 224, 224);
+            display: flex;
+
+            img {
+                display: inline;
+                width: 100px;
+                height: 100px;
+            }
+            
+            .info {
+                display: flex;
+                display: inline-block;
+                width: 100%;
+
+            
+                .name {
+                    display: inline-block;
+                    margin-right: 20px;
+                    p {
+                        display: inline-block;
+                        font-size: 18px;
+                        font-weight: 500;
+                        margin-right: 10px;
+                    }
+                }
+                .category {
+                    display: inline-block;
+                    margin-right: 20px;
+                    p {
+                        display: inline-block;
+                        font-size: 18px;
+                        font-weight: 500;
+                        margin-right: 10px;
+                    }
+                }
+                .price {
+                    display: inline-block;
+                    margin-right: 20px;
+                    p {
+                        display: inline-block;
+                        font-size: 18px;
+                        font-weight: 500;
+                        margin-right: 10px;
+                    }
+                }
+                .tag {
+                    display: inline-block;
+                    margin-right: 20px;
+          
+                    p {
+                        display: inline-block;
+                        font-size: 18px;
+                        font-weight: 500;
+                        margin-right: 10px;
+                    }
+                }
+                .description {
+                    display: block;
+                    p {
+                    font-size: 18px;
+                    font-weight: 500;
+                    }
+                }
+            }
+
+
+            .buttons {
+                display: flex;
+                display: block;
+
+                .edit {
+                    margin-bottom: 10px;
+                    background-color: white;
+                    border: none;
+
+
+                    &:hover {
+                        color: rgb(35, 91, 175);
+                    }
+                }
+          
+    
+               .delete {
+                    background-color: white;
+                    border: none;
+                  
+                    &:hover {
+                        color: rgb(196, 62, 62);
+                    }
+                }
+    
+            }
+    
+        }
+
+    }
+}

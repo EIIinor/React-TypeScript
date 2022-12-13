@@ -16,7 +16,7 @@ const ProductDetailsView: React.FC = () => {
 
   useEffect(() => {
     productContext.get(id)
-    productContext.getFeatured(8)
+    productContext.getFeatured(4)
   }, [])
 
 

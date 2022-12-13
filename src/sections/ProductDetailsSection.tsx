@@ -13,10 +13,10 @@ const ProductDetailsSection: React.FC<IProductDetailsProps> = ({product}) => {
             <div className='container'>
                 <div className='card'>
                     <div className='images'>
-                        <img src={product.imageName} alt='' />
-                        <img className='one' src={smallCardImg} alt='' />
-                        <img className='two' src={smallCardImg} alt='' />
-                        <img className='three' src={smallCardImg} alt='' />
+                        <img className='one' src={product.imageName} alt='' />
+                        <img className='two' src={product.imageName} alt='' />
+                        <img className='three' src={product.imageName} alt='' />
+                        <img className='four' src={product.imageName} alt='' />
                     </div>
                     <div className='card-body'>
                         <h5 className='card-title'>{product.name}</h5>
