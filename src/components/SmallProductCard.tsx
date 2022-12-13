@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import smallCardImg from "../assets/images/small-card-img.png"
 
+
 const SmallProductCard: React.FC = () => {
 
     const addToWishlist = () => {

@@ -21,15 +21,15 @@ const ProductsList = () => {
                   <img src={product.imageName}/>
 
                   <div className='info'>
-                    <p className='name'><p>Name:</p> {product.name} </p>
-                    <p className='category'><p>Category:</p> {product.category}</p>
-                    <p className='price'><p>Price:</p> {product.price} $</p>
-                    <p className='tag'><p>Tag:</p> {product.tag}</p>
-                    <p className='description'><p>Description:</p> {product.description}</p>
+                    <h1 className='name'><p>Name:</p> {product.name} </h1>
+                    <h1 className='category'><p>Category:</p> {product.category}</h1>
+                    <h1 className='price'><p>Price:</p> {product.price} $</h1>
+                    <h1 className='tag'><p>Tag:</p> {product.tag}</h1>
+                    <h1 className='description'><p>Description:</p> {product.description}</h1>
                   </div>
 
                   <div className='buttons'>
-                    <button className='edit' onClick={() => update }><i className="fa-solid fa-pencil"></i></button>
+                    <button className='edit' onClick={update}><i className="fa-solid fa-pencil"></i></button>
                     <button className='delete' onClick={() => remove(product.articleNumber)}><i className="fa-solid fa-trash"></i></button>
                   </div>
 

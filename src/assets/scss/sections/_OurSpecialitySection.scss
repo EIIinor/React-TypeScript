@@ -45,7 +45,9 @@
             }
 
             .first {
-                padding-right: 30px;
+                margin-right: 30px;
+                width: 245px;
+                height: 232px;
             }
 
             .return {
@@ -64,7 +66,9 @@
                 }
             }
             .seacond {
-                padding-right: 30px;
+                margin-right: 30px;
+                width: 245px;
+                height: 232px;
             }
 
             .adjustment {
@@ -87,6 +91,11 @@
                     text-decoration: underline;
                     color: $color-dark;
                 }
+            }
+            .third {
+                margin-right: 30px;
+                width: 245px;
+                height: 232px;
             }
         }
     }

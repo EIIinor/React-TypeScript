@@ -9,6 +9,7 @@
         .box {
             border: 1px solid rgb(224, 224, 224);
             display: flex;
+            padding-top: 5px;
 
             img {
                 display: inline;
@@ -25,6 +26,7 @@
                 .name {
                     display: inline-block;
                     margin-right: 20px;
+                    font-size: 16px;
                     p {
                         display: inline-block;
                         font-size: 18px;
@@ -35,6 +37,7 @@
                 .category {
                     display: inline-block;
                     margin-right: 20px;
+                    font-size: 16px;
                     p {
                         display: inline-block;
                         font-size: 18px;
@@ -45,6 +48,7 @@
                 .price {
                     display: inline-block;
                     margin-right: 20px;
+                    font-size: 16px;
                     p {
                         display: inline-block;
                         font-size: 18px;
@@ -55,6 +59,7 @@
                 .tag {
                     display: inline-block;
                     margin-right: 20px;
+                    font-size: 16px;
           
                     p {
                         display: inline-block;
@@ -65,6 +70,7 @@
                 }
                 .description {
                     display: block;
+                    font-size: 16px;
                     p {
                     font-size: 18px;
                     font-weight: 500;
@@ -76,13 +82,16 @@
             .buttons {
                 display: flex;
                 display: block;
+                justify-items: right;
+                margin-right: 0px;
+                padding-right: 0px;
+                
 
                 .edit {
                     margin-bottom: 10px;
-                    background-color: white;
+                    background-color: lightgray;
                     border: none;
-
-
+                    
                     &:hover {
                         color: rgb(35, 91, 175);
                     }
@@ -90,7 +99,7 @@
           
     
                .delete {
-                    background-color: white;
+                    background-color: lightgray;
                     border: none;
                   
                     &:hover {
