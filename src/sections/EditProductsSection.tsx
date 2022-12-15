@@ -2,13 +2,14 @@ import React from 'react'
 import CreateFormProduct from '../components/CreateFormProduct'
 
 
-const EditProductsSection: React.FC = () => {
 
+
+const EditProductsSection: React.FC = () => {
 
   return (
     <div className='container'>
         
-        <CreateFormProduct />
+        {/* <CreateFormProduct/> */}
     </div>
   )
 }

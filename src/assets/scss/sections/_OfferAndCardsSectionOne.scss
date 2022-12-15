@@ -14,16 +14,32 @@
         }
 
         .info {
-            text-align: center;
+            display: flex;
+            display: inline;
             position: relative;
             left: 170px;
-            bottom: 450px;
+            bottom: 400px;
 
             h1 {
-                color: $color-white;
+                display: flex;
+                display: inline;
+                color: black;
                 font-size: 3rem;
                 font-weight: 600;
                 margin-bottom: 2rem;
+
+                p {
+                    display: flex;
+                    display: inline;
+                    color: black;
+                    margin-left: 6px;
+                }
+            }
+
+            .btn-theme-white {
+                display: flex;
+                display: block;
+                margin-top: 1rem;
             }
 
         }

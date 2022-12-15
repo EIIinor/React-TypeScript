@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import GrayImage from '../assets/images/gray-img.png'
 import ProductCard from '../components/ProductCard'
 import { ProductModel } from '../models/ProductModel'
+import MaleOne from '../assets/images/twoForOneMale.jpg'
 
 interface ICardsProps {
   items: ProductModel[]
@@ -20,9 +21,9 @@ const OfferAndCardsSectionTwo: React.FC<ICardsProps> = ({ items = [] }) => {
                 }
               </div>
             </div>
-            <img src={GrayImage} alt=''/>
+            <img src={MaleOne} alt=''/>
             <div className='info'>
-                <h1>2 FOR USD $29</h1>
+              <h1>2 FOR USD<p>$29</p></h1>
                 <NavLink to="#" className="btn-theme-white">
                     <span className='corner-left'></span>
                     <span className='corner-right'></span>

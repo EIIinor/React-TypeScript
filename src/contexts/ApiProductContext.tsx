@@ -72,8 +72,15 @@ const ApiProductProvider = ( {children} : IProductProviderProps ) => {
         },
         body: JSON.stringify(product)
       })
-      if (result.status === 200) 
-        setProduct(await result.json())
+      if (result.status === 200) {
+          const data = await result.json()
+          setProducts(products => {
+            return products.map(product => {
+              if(product.articleNumber === data.articleNumber) return data
+              return product
+            })
+          })
+      }
     }
 
     const remove = async (articleNumber: string) => {
