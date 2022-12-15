@@ -15,7 +15,7 @@ const EditProductsView: React.FC = () => {
     useEffect(() => {
       getAll()
   
-    }, [])
+    }, [remove])
 
   return (
     <>

@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
-import {IProductContext, ApiProductContext} from '../contexts/ApiProductContext'
+import { NavLink, useParams } from 'react-router-dom'
+import { IProductContext, useProductContext } from '../contexts/ApiProductContext'
 import { ProductModel } from '../models/ProductModel'
 
 interface IProductsListProps {
@@ -8,11 +9,12 @@ interface IProductsListProps {
 }
 
 const ProductsList: React.FC<IProductsListProps> = ({products, remove}) => {
-    const { getAll, update } = React.useContext(ApiProductContext) as IProductContext
+    const {id} = useParams<string>()
+    const productContext = useProductContext () as IProductContext
 
   useEffect(() => {
-    getAll()
-
+    productContext.getAll()
+    productContext.get(id)
   }, [])
 
   return (
@@ -34,7 +36,9 @@ const ProductsList: React.FC<IProductsListProps> = ({products, remove}) => {
                       <h1 className='description'><p>Description:</p> {product.description}</h1>
                     </div>
                     <div className='buttons'>
-                      <button className='edit' onClick={update}><i className="fa-solid fa-pencil"></i></button>
+                      <NavLink to={`/updateProduct/${product.articleNumber}`}>
+                        <button className='edit'><i className="fa-solid fa-pencil"></i></button>
+                      </NavLink>
                       <button className='delete' onClick={() => remove(product.articleNumber)}><i className="fa-solid fa-trash"></i></button>
                     </div>
 

@@ -1,6 +1,7 @@
 
 import './style.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {ShoppingCartProvider} from './contexts/ShoppingCartContext';
 
 import HomeView from './views/HomeView';
 import CategoriesView from './views/CategoriesView';
@@ -13,11 +14,11 @@ import WishlistView from './views/WishlistView';
 import ShoppingCartView from './views/ShoppingCartView';
 import NotFoundView from './views/NotFoundView';
 
-// import ProductProvider from './contexts/ProductContext'
-import {ShoppingCartProvider} from './contexts/ShoppingCartContext'
-import ApiProductProvider from './contexts/ApiProductContext'
-import EditProductsView from './views/EditProductsView';
+/* import ProductProvider from './contexts/ProductContext' */
 
+import ApiProductProvider from './contexts/ApiProductContext';
+import EditProductsView from './views/EditProductsView';
+import UpdateProductView from './views/UpdateProductView';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
         <Route path='/shoppingcart' element={<ShoppingCartView />} />
         <Route path='*' element={<NotFoundView />} />
         <Route path='/editProducts' element={<EditProductsView />} />
+        <Route path='/updateProduct/:id' element={<UpdateProductView />}/>
       </Routes>
       </ShoppingCartProvider>
       </ApiProductProvider>
