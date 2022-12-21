@@ -1,20 +1,20 @@
 import React, {useEffect} from 'react'
 import { NavLink, useParams } from 'react-router-dom'
-import { IProductContext, useProductContext } from '../contexts/ApiProductContext'
+import {IProductContext, ApiProductContext} from '../contexts/ApiProductContext'
 import { ProductModel } from '../models/ProductModel'
 
 interface IProductsListProps {
-  products: any
   remove: any
+  products: any
 }
 
-const ProductsList: React.FC<IProductsListProps> = ({products, remove}) => {
-    const {id} = useParams<string>()
-    const productContext = useProductContext () as IProductContext
+const ProductsList: React.FC<IProductsListProps> = ( {remove, products}) => {
+    const {id} = useParams()
+    const { get, getAll } = React.useContext(ApiProductContext) as IProductContext
 
   useEffect(() => {
-    productContext.getAll()
-    productContext.get(id)
+    getAll()
+    get(id)
   }, [])
 
   return (

@@ -4,7 +4,7 @@ import { IProductContext, ApiProductContext } from '../contexts/ApiProductContex
 
 
 const CreateFormProduct: React.FC = () => {
-    const { create , product, setProduct } = React.useContext(ApiProductContext) as IProductContext
+    const { create, product, setProduct } = React.useContext(ApiProductContext) as IProductContext
 
   return (
     <div className='container'>

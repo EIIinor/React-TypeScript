@@ -1,23 +1,31 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import UpdateForm from '../components/UpdateForm'
-import { IProductContext, useProductContext } from '../contexts/ApiProductContext'
+import {IProductContext, ApiProductContext} from '../contexts/ApiProductContext'
 
 const UpdateProductView: React.FC = () => {
   document.title = 'Update Product | Fixxo.'
-  const {id} = useParams<string>()
-  const productContext = useProductContext () as IProductContext
+  const {id} = useParams()
+  const { update, get, product } = React.useContext(ApiProductContext) as IProductContext
  
-  
+  // const articleNumber = useParams().articleNumber
+  // const getId = articleNumber !== undefined ? (articleNumber): "";
+
 
   useEffect(() => {
-    productContext.get(id)
+    get(id)
   }, [])
+
+  // useEffect (() => {
+  //   if(product.articleNumber) {
+  //     get(product.articleNumber)
+  //   }
+  // }, [])
 
 
   return (
     <>
-      <UpdateForm  />
+      <UpdateForm product={product} update={update}/>
     </>
   )
 }

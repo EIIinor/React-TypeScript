@@ -9,12 +9,11 @@ import {IProductContext, ApiProductContext} from '../contexts/ApiProductContext'
 
 
 const EditProductsView: React.FC = () => {
-    const { products, getAll, remove} = React.useContext(ApiProductContext) as IProductContext
+    const { getAll, remove, products} = React.useContext(ApiProductContext) as IProductContext
     document.title = 'Fixxo.'
 
     useEffect(() => {
       getAll()
-  
     }, [remove])
 
   return (
@@ -22,7 +21,7 @@ const EditProductsView: React.FC = () => {
     <MainMenuSection />
     <BreadcrumbSection currentPage={'Edit Products'} />
     <CreateFormProduct />
-    <ProductsList products={products} remove={remove} />
+    <ProductsList products={products}  remove={remove} />
     </>
   )
 }

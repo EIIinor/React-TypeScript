@@ -62,25 +62,29 @@ const ApiProductProvider = ( {children} : IProductProviderProps ) => {
     }
 
   
-    const update = async (e: React.FormEvent) => {
-      e.preventDefault()
+    const update = async () => {
+      // e.preventDefault()
 
-      const result = await fetch(`${baseUrl}/${product.articleNumber}`, {
+      const res = await fetch(`${baseUrl}/${product.articleNumber}`, {
         method: 'put',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(product)
       })
-      if (result.status === 200) {
-          const data = await result.json()
-          setProducts(products => {
-            return products.map(product => {
-              if(product.articleNumber === data.articleNumber) return data
-              return product
-            })
-          })
-      }
+      console.log(res)
+      if (res.status === 200) 
+         setProduct(product_default)
+      
+        // {
+        //     const data = await result.json()
+        //     setProducts(products => {
+        //       return products.map(product => {
+        //         if(product.articleNumber === data.articleNumber) return data
+        //         return product
+        //      })
+        //     })
+        // }
     }
 
     const remove = async (articleNumber: string) => {
